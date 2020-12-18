@@ -1,0 +1,33 @@
+.switch {
+  height: 24px;
+  width: 42px;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #70839a;
+  padding: 2px;
+  box-sizing: border-box;
+  transition: 0.3s all;
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  background-color: #70839a;
+  border-radius: 100px;
+  position: absolute;
+  transition: 0.3s all;
+  right: calc(100% - 18px);
+}
+
+.active {
+  .circle {
+    right: 2px;
+    background-color: #fff;
+  }
+
+  &.switch {
+    background-color: #3155da;
+    border-color: #3155da;
+  }
+}

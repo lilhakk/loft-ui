@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+
+.root {
+  padding: 24px;
+  width: 600px;
+}

@@ -1,0 +1,44 @@
+.h1 {
+  color: #333;
+  font-size: 42px;
+}
+
+.h2 {
+  margin-top: 36px;
+  margin-bottom: 8px;
+}
+
+.p {
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 15px;
+}
+
+.lineContent {
+  display: table-cell;
+}
+
+.line {
+  margin-bottom: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.lineNumber {
+  display: table-cell;
+  text-align: right;
+  padding-right: 1em;
+  user-select: none;
+  opacity: 0.5;
+}
+
+.highlight {
+  margin-bottom: 12px;
+}
+
+.code {
+  background-color: #dde8f5;
+  padding: 2px 6px;
+}

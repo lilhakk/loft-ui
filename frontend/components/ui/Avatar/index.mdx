@@ -1,0 +1,51 @@
+import Avatar from './'
+
+# Avatar
+Компонент для отображения изображения профиля пользователя
+
+```js
+import { Avatar } from 'plain-ui'
+```
+
+## Простой пример
+Если никаких параметров не установлено, отображается fallback картинка
+```jsx
+<Avatar />
+```
+
+<Avatar style={{ backgroundColor: '#eee' }} />
+
+## Ссылка на изображение
+Чтобы применить изображение, нужно передать ссылку в проп `src`
+```jsx
+<Avatar src='...' />
+```
+<Avatar src='https://en.24smi.org/public/media/235x307/celebrity/2019/09/17/kdorlaf8ew2j-nick-bateman.jpg' />
+
+## Размеры
+Есть 4 варианта размеров: `xl`, `l`, `m`, `s` (по умолчанию - `m`)
+```jsx
+<Avatar size='xl' />
+<Avatar size='l' />
+<Avatar size='m' />
+<Avatar size='s' />
+```
+
+<div style={{ display: 'flex' }}>
+  <Avatar size='xl' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+  <Avatar size='l' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+  <Avatar size='m' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+  <Avatar size='s' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+</div>
+
+## Форма
+По умолчанию - `circle`
+```jsx
+<Avatar shape='circle' />
+<Avatar shape='square' />
+```
+
+<div style={{ display: 'flex' }}>
+  <Avatar shape='circle' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+  <Avatar shape='square' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+</div>

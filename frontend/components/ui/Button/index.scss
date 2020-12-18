@@ -1,0 +1,56 @@
+.button {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  padding: 10px 36px;
+  border: 1px solid #3155da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+  background-color: #3155da;
+  cursor: pointer;
+  display: table;
+
+  &:hover {
+    color: #3155da;
+    background-color: transparent;
+  }
+}
+
+.load {
+  background-color: transparent;
+  height: 41px;
+  align-items: center;
+  display: flex;
+  max-width: max-content;
+
+  &:hover {
+    cursor: not-allowed;
+    border: 1px solid #3155da;
+    background-color: transparent;
+  }
+}
+
+.line {
+  color: #3155da;
+  background-color: transparent;
+
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.text {
+  color: #3155da;
+  border-color: transparent;
+  background-color: transparent;
+
+  &:hover {
+    border-color: transparent;
+    opacity: 0.4;
+  }
+}

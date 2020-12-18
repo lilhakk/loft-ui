@@ -1,0 +1,74 @@
+.label {
+  color: #70839a;
+  transition: 0.3s all;
+}
+
+.radio {
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.3s all;
+  display: flex;
+  align-items: center;
+  max-width: max-content;
+
+  &:not(.active):hover {
+    opacity: 0.4;
+  }
+}
+
+.iconCase {
+  border-radius: 40px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #70839a;
+  margin: 1px;
+  margin-right: 12px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.icon {
+  opacity: 0;
+  background-color: #3155da;
+  border-radius: 40px;
+  width: 0;
+  height: 0;
+  transition: 0.3s all;
+}
+
+.active {
+  & .iconCase {
+    border: 2px solid #3155da;
+  }
+
+  & .label {
+    color: #3155da;
+  }
+
+  .icon {
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+[class="light"] {
+  .label {
+    color: #0e1023;
+  }
+
+  .iconCase {
+    border-color: #0e1023;
+  }
+
+  .active {
+    & .iconCase {
+      border-color: #8160dc;
+    }
+
+    & .label {
+      color: #3155da;
+    }
+  }
+}

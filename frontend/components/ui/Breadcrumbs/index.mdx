@@ -1,0 +1,74 @@
+import Breadcrumbs from './'
+
+# Breadcrumbs
+Хлебные крошки, используются для того чтобы пользователь лучше понимал локацию местонахождения на сайте
+
+```js
+import { Breadcrumbs } from 'plain-ui'
+```
+
+## Простой пример
+Для использования нужно передать массив объектов в проп `data`
+
+Где `link` - ссылка на страницу, `title` - ее название.
+```jsx
+<Breadcrumbs
+  data={[
+    { link: '/', title: 'Главная' },
+    { link: '/menu', title: 'Меню' },
+    { link: '/menu/salads', title: 'Салаты' }
+  ]}
+/>
+```
+
+<Breadcrumbs
+  data={[
+    { link: '/breadcrumbs', title: 'Главная' },
+    { link: '/breadcrumbs', title: 'Меню' },
+    { link: '/breadcrumbs', title: 'Салаты' }
+  ]}
+/>
+
+## Кастомный сепаратор
+Можно применить любой разделитель с помощью jsx
+```jsx
+const style = {
+  width: '8px',
+  height: '8px',
+  backgroundColor: '#000000'
+}
+
+const separator = <div style={style} />
+
+<Breadcrumbs
+  separator={separator}
+  data={[
+    { link: '/breadcrumbs', title: 'Главная' },
+    { link: '/breadcrumbs', title: 'Меню' },
+    { link: '/breadcrumbs', title: 'Салаты' }
+  ]}
+/>
+```
+
+export const ExampleSeparator = () => {
+  const style = {
+    width: '4px',
+    height: '4px',
+    backgroundColor: '#000000',
+    margin: '0 8px',
+    borderRadius: 30
+  }
+  const separator = <div style={style} />
+  return (
+    <Breadcrumbs
+      separator={separator}
+      data={[
+        { link: '/breadcrumbs', title: 'Главная' },
+        { link: '/breadcrumbs', title: 'Меню' },
+        { link: '/breadcrumbs', title: 'Салаты' }
+      ]}
+    />
+  )
+}
+
+<ExampleSeparator />
