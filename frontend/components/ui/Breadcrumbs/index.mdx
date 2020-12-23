@@ -8,17 +8,12 @@ import { Breadcrumbs } from 'plain-ui'
 ```
 
 ## Простой пример
-Для использования нужно передать массив объектов в проп `data`
-
-Где `link` - ссылка на страницу, `title` - ее название.
 ```jsx
-<Breadcrumbs
-  data={[
-    { link: '/', title: 'Главная' },
-    { link: '/menu', title: 'Меню' },
-    { link: '/menu/salads', title: 'Салаты' }
-  ]}
-/>
+<Breadcrumbs>
+  <Breadcrumbs.Item link='/'>Главная</Breadcrumbs.Item>
+  <Breadcrumbs.Item link='/menu'>Меню</Breadcrumbs.Item>
+  <Breadcrumbs.Item link='/menu/salads'>Салаты</Breadcrumbs.Item>
+</Breadcrumbs>
 ```
 
 <Breadcrumbs
@@ -40,14 +35,11 @@ const style = {
 
 const separator = <div style={style} />
 
-<Breadcrumbs
-  separator={separator}
-  data={[
-    { link: '/breadcrumbs', title: 'Главная' },
-    { link: '/breadcrumbs', title: 'Меню' },
-    { link: '/breadcrumbs', title: 'Салаты' }
-  ]}
-/>
+<Breadcrumbs separator={separator}>
+  <Breadcrumbs.Item link='/'>Главная</Breadcrumbs.Item>
+  <Breadcrumbs.Item link='/menu'>Меню</Breadcrumbs.Item>
+  <Breadcrumbs.Item link='/menu/salads'>Салаты</Breadcrumbs.Item>
+</Breadcrumbs>
 ```
 
 export const ExampleSeparator = () => {

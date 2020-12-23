@@ -4,7 +4,6 @@
   line-height: 19px;
   align-items: center;
   text-align: center;
-  padding: 10px 36px;
   border: 1px solid #3155da;
   border-radius: 6px;
   box-sizing: border-box;
@@ -45,12 +44,21 @@
 }
 
 .text {
-  color: #3155da;
+  color: #999;
   border-color: transparent;
   background-color: transparent;
 
   &:hover {
+    color: #333;
     border-color: transparent;
-    opacity: 0.4;
+    background-color: #f3f5fd;
   }
+}
+
+.m {
+  padding: 8px 20px;
+}
+
+.s {
+  padding: 6px 16px;
 }

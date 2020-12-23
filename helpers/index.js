@@ -1,4 +1,5 @@
 import { useMemo, useRef } from 'react';
+import { randomString } from './methods';
 // import ResizeObserver from "resize-observer-polyfill";
 
 export * from './methods';
@@ -30,4 +31,8 @@ export const useResize = (ref, callback, update = [])=> {
     observer.current = new ResizeObserver(callback);
     observer.current.observe(ref.current);
   }, [!!ref.current, ...update]);
+};
+
+export const useId = ()=> {
+  return useMemo(()=> randomString(16), []);
 };

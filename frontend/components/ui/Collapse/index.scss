@@ -10,13 +10,6 @@
   z-index: -1;
 }
 
-.render {
-  opacity: 0;
-  position: absolute;
-  height: auto;
-}
-
-.animate,
 .open {
   opacity: 1;
   height: 0;

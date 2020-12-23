@@ -8,7 +8,7 @@ export default function Separator({ separator }) {
   }
 
   return (
-    <div className={s.sep} />
+    <div className={s.breadcrumbsSeparator} />
   );
 
 }

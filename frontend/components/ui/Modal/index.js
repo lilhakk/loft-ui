@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Button';
+import Portal from '../Portal';
 import { c } from 'helpers';
 import guide from './index.mdx';
 import s from './index.scss';
-import { Modal_F } from '..';
 
-const TIME_ANIMATION = 400;
 let MOUSE_POS = {};
 
 window.addEventListener('click', clickMouse, true);
@@ -16,82 +15,137 @@ function clickMouse(e) {
     x: e.pageX,
     y: e.pageY - scrollTop
   };
-
-  setTimeout(()=> (MOUSE_POS = {}), 100);
 };
 
-function Modal() {
-  const modal = {};
-  const [styleModal, setStyleModal] = useState(null);
-  const [isShow, setIsShow] = useState(null);
+// Modal.Content
+// Modal.Actions
+
+function Modal({
+  children,
+  style,
+  className,
+  visible,
+  onDone,
+  onDismiss,
+  onCancel
+}) {
+  const [step, setStep] = useState('close');
+  const [mousePositions, setMousePositions] = useState({});
+  const [_style, setStyle] = useState({});
 
   useEffect(()=> {
-    if (modal.data) {
-      setStyleModal({ left: MOUSE_POS.x, top: MOUSE_POS.y });
-      setTimeout(()=> {
-        setIsShow(true);
-      }, 50);
+    if (visible) {
+      show();
+    } else if (step === 'show') {
+      hide();
     }
-  }, [modal.data]);
+  }, [visible]);
 
-  const hide = ()=> {
-    setIsShow(false);
+  function show() {
+    setStep('render');
+    setMousePositions(MOUSE_POS);
+
+    setStyle({
+      left: MOUSE_POS.x,
+      top: MOUSE_POS.y,
+      transformOrigin: `0px ${MOUSE_POS.y - 270}px`
+    });
+
     setTimeout(()=> {
-      setStyleModal(null);
-      modal.set(null);
-    }, TIME_ANIMATION);
-  };
-
-  const ok = ()=> {
-    modal.data.onDone && modal.data.onDone();
-    hide();
-  };
-
-  const cancel = ()=> {
-    modal.data.onCancel && modal.data.onCancel();
-    hide();
-  };
-
-  if (!modal.data) return null;
-
-  let _styleModal = styleModal;
-  if (modal.data?.height && isShow) {
-    _styleModal = {
-      ..._styleModal,
-      minHeight: modal.data?.height,
-      height: modal.data?.height
-    };
+      setStyle({});
+      setStep('show');
+    }, 100);
   }
 
+  function hide() {
+    setStep('render');
+
+    setStyle({
+      left: mousePositions.x,
+      top: mousePositions.y,
+      transformOrigin: `0px ${mousePositions.y - 270}px`
+    });
+
+    setTimeout(()=> {
+      setStyle({});
+      setStep('close');
+    }, 300);
+  }
+
+  let title = null;
+  let content = null;
+  const actions = [];
+  const other = [];
+  React.Children.toArray(children).forEach(child=> {
+    if (child.type.name === ModalTitle.name) {
+      title = child;
+      return;
+    }
+
+    if (child.type.name === ModalContent.name) {
+      content = child;
+      return;
+    }
+
+    if (child.type.name === ModalActions.name) {
+      actions.push(child);
+      return;
+    }
+
+    other.push(child);
+  });
+
+  // render
+  // animation
   return (
-    <>
-      <div className={c(s.case, { [s.show]: isShow })}>
-        <div className={s.overlay} onClick={hide} />
+    <Portal>
+      {
+        step !== 'close' &&
+        <>
+          <div className={s.overlay} onClick={onDismiss} />
+          <div
+            className={c(s.modal, { [s.show]: step === 'show' }, className)}
+            style={_style}
+          >
+            <div className={s.case}>
+              {
+                !!title &&
+                <div className={s.title}>{title}</div>
+              }
 
-        <div className={c(s.modal)} style={_styleModal}>
-          <div className={s.header}>{modal.data.title}</div>
+              <div className={s.content}>{content || other}</div>
+            </div>
 
-          <div className={s.content}>
-            {modal.data.content}
+            <div className={s.actions}>
+              {!!actions && actions}
+
+              {
+                !actions &&
+                <div></div>
+              }
+            </div>
           </div>
-
-          <div className={s.actions}>
-            {
-              (modal.data.nameCancel || modal.data.onCancel || modal.data.hasCancel) &&
-              <Button variant="line" className={s.button} onClick={()=> cancel()}>
-                {modal.nameCancel || 'Отмена'}
-              </Button>
-            }
-            <Button className={s.button} onClick={()=> ok()}>
-              {modal.data.nameDone || 'Ок'}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </>
+        </>
+      }
+    </Portal>
   );
 };
 
 Modal.guide = guide;
 
+function ModalTitle({ children }) {
+  return children;
+};
+
+function ModalContent({ children }) {
+  return children;
+};
+
+function ModalActions({ children }) {
+  return children;
+};
+
+Modal.Title = ModalTitle;
+Modal.Content = ModalContent;
+Modal.Actions = ModalActions;
 export default Modal;

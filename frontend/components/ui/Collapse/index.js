@@ -3,21 +3,21 @@ import { c, useResize } from 'helpers';
 import guide from './index.mdx';
 import s from './index.scss';
 
-const STEP_STATUSES = {
+const STEPS = {
   CLOSE: 'close',
   OPEN: 'open'
 };
 
 function Collapse({ visible, children }) {
   const refChild = useRef();
-  const [stepStatus, setStepStatus] = useState(visible ? STEP_STATUSES.OPEN : STEP_STATUSES.CLOSE);
+  const [step, setStep] = useState(visible ? STEPS.OPEN : STEPS.CLOSE);
   const [fullHeight, setFullHeight] = useState(null);
   const [isUpdateRoot, setIsUpdateRoot] = useState(false);
 
   useEffect(()=> {
     if (visible) {
       setFullHeight(getValidHeight(refChild.current));
-      setStepStatus(STEP_STATUSES.OPEN);
+      setStep(STEPS.OPEN);
     } else {
       setFullHeight(null);
     }
@@ -26,7 +26,7 @@ function Collapse({ visible, children }) {
   useResize(refChild, ()=> {
     if (!fullHeight) return;
 
-    const isOpen = stepStatus === STEP_STATUSES.OPEN;
+    const isOpen = step === STEPS.OPEN;
     if (isOpen && (getValidHeight(refChild.current) !== fullHeight)) {
       setFullHeight(getValidHeight(refChild.current));
       setIsUpdateRoot(true);
@@ -35,7 +35,7 @@ function Collapse({ visible, children }) {
     if (isOpen && (getValidHeight(refChild.current) === fullHeight)) {
       setIsUpdateRoot(false);
     }
-  }, [stepStatus, fullHeight]);
+  }, [step, fullHeight]);
 
   const style = {};
   if (fullHeight !== null && visible) {
@@ -48,7 +48,7 @@ function Collapse({ visible, children }) {
   return (
     <div
       style={style}
-      className={c(s.collapse, s[stepStatus])}
+      className={c(s.collapse, s[step])}
     >
       <div ref={refChild}>{children}</div>
     </div>

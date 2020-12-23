@@ -6,7 +6,7 @@ import Separator from './Separator';
 import guide from './index.mdx';
 import s from './index.scss';
 
-// renderItem
+// Breadcrumbs.Item
 function Breadcrumbs({
   className,
   data,
@@ -21,8 +21,8 @@ function Breadcrumbs({
           <React.Fragment key={index}>
             {
               index + 1 === data.length
-                ? <div className={c(s.title, s.active)}>{item.title}</div>
-                : <Link className={s.title} to={item.link}>{item.title}</Link>
+                ? <div className={c(s.breadcrumbsTitle, s.breadcrumbsTitleActive)}>{item.title}</div>
+                : <Link className={s.breadcrumbsTitle} to={item.link}>{item.title}</Link>
             }
             {
               (index + 1 !== data.length)
