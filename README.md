@@ -11,3 +11,6 @@ yarn add plain-ui
 ```
 
 ## Usage
+```jsx
+import { Button } from 'plain-ui';
+```
