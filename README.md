@@ -9,3 +9,5 @@ or
 ```bash
 yarn add plain-ui
 ```
+
+## Usage
