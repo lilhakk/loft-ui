@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as components from 'loft-ui-react';
+import * as components from '@loft-ui/react';
 import s from './index.scss';
 
 export default function Sidebar() {
@@ -14,7 +14,7 @@ export default function Sidebar() {
             key={key}
             className={s.sidebarItem}
             activeClassName={s.sidebarItemActive}
-            to={'/' + key.toLowerCase()}
+            to={'/react/' + key.toLowerCase()}
           >{key}</NavLink>;
         })
       }

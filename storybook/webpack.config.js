@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = env=> {
   const isEnvDevelopment = env === 'development';
@@ -15,6 +16,7 @@ module.exports = env=> {
 
   const plugins = [
     new ErrorOverlayPlugin(),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       minify: { collapseWhitespace: true }
@@ -34,10 +36,20 @@ module.exports = env=> {
       path: path.join(__dirname, './build'),
       publicPath: '/'
     },
+    resolve: {
+      alias: {
+        vue: 'vue/dist/vue.esm.js'
+      },
+      extensions: ['.js', '.jsx', '.vue', '.json']
+    },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          test: /(\.js|\.jsx)$/,
           include: [
             path.join(__dirname, './src'),
             path.join(__dirname, '../packages/react')

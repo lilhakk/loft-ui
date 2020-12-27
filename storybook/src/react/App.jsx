@@ -1,10 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import { Portal } from 'loft-ui-react';
-import * as components from 'loft-ui-react';
-import s from './index.scss';
+import { Portal } from '@loft-ui/react';
+import * as components from '@loft-ui/react';
+import s from '../index.scss';
 
+// RouteMiddleware
 const Routers = ()=> {
   return (
     <main>
@@ -18,7 +19,7 @@ const Routers = ()=> {
                 return <Route
                   exact
                   key={key}
-                  path={`/${key}`}
+                  path={`/react/${key}`}
                   component={components[key].guide}
                 />;
               })
