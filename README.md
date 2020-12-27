@@ -1,18 +1,18 @@
 ## Installation
 
 ```bash
-npm i plain-ui --save
+npm i loft-ui --save
 ```
 
 or
 
 ```bash
-yarn add plain-ui
+yarn add loft-ui
 ```
 
 ## Usage
 ```jsx
-import { Button } from 'plain-ui'
+import { Button } from 'loft-ui'
 
 const App = () => (
   <Button variant="line">Click me</Button>
