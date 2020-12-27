@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../Button';
+// import Button from '../Button';
 import Portal from '../Portal';
 import { c } from 'helpers';
 import guide from './index.mdx';
@@ -22,12 +22,12 @@ function clickMouse(e) {
 
 function Modal({
   children,
-  style,
+  // style,
   className,
   visible,
-  onDone,
-  onDismiss,
-  onCancel
+  // onDone,
+  onDismiss
+  // onCancel
 }) {
   const [step, setStep] = useState('close');
   const [mousePositions, setMousePositions] = useState({});
@@ -48,7 +48,7 @@ function Modal({
     setStyle({
       left: MOUSE_POS.x,
       top: MOUSE_POS.y,
-      transformOrigin: `0px ${MOUSE_POS.y - 270}px`
+      transformOrigin: `0px ${MOUSE_POS.y - 300}px`
     });
 
     setTimeout(()=> {
@@ -63,7 +63,7 @@ function Modal({
     setStyle({
       left: mousePositions.x,
       top: mousePositions.y,
-      transformOrigin: `0px ${mousePositions.y - 270}px`
+      transformOrigin: `0px ${mousePositions.y - 300}px`
     });
 
     setTimeout(()=> {

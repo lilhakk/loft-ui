@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = env=> {
   const isEnvDevelopment = env === 'development';
@@ -22,8 +21,6 @@ module.exports = env=> {
     }),
     autoprefixer
   ];
-
-  if (isEnvDevelopment) plugins.push(new BundleAnalyzerPlugin());
 
   return {
     name: 'frontend',
