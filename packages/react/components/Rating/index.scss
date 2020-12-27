@@ -1,0 +1,23 @@
+.loftRating {
+  display: flex;
+  margin: 0 -2px;
+  align-self: flex-start;
+  width: max-content;
+}
+
+.loftRatingItem {
+  width: 16px;
+  height: 16px;
+  background-image: url('./img/star.svg');
+  background-size: cover;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.loftRatingItemActive {
+  background-image: url('./img/star_active.svg');
+}
+
+.loftRatingItemHover {
+  background-image: url('./img/star_hover.svg');
+}

@@ -1,0 +1,14 @@
+{
+  "name": "loft-ui-react",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">= 16.0.0"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "react-input-mask": "^2.0.4"
+  }
+}

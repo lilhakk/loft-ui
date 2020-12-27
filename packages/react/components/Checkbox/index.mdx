@@ -1,0 +1,39 @@
+import { useState } from 'react'
+import Checkbox from './'
+
+# Checkbox
+С помощью чекбоксов пользователь выбирает элементы из списка данных
+
+```js
+import { Checkbox } from 'loft-ui'
+```
+
+## Пример
+```jsx
+const [selected, setSelected] = useState(false);
+
+return (
+  <Checkbox
+    selected={selected}
+    onClick={()=> setSelected(!selected)}
+  >Example</Checkbox>
+)
+```
+
+export const Example = () => {
+  const [actives, setActives] = useState([false, true]);
+  return (
+    <>
+      <Checkbox
+        selected={actives[0]}
+        onClick={()=> setActives([!actives[0], actives[1]])}
+      >Default</Checkbox>
+      <Checkbox
+        selected={actives[1]}
+        onClick={()=> setActives([actives[0], !actives[1]])}
+      >Checked</Checkbox>
+    </>
+  )
+}
+
+<Example />
