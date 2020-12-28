@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --env=development --mode development --open --hot",
-    "build": "webpack --config webpack.config.js --env=production --mode production"
+    "start-react": "webpack-dev-server --config webpack.react.js --env.mode=development --mode development --open --hot",
+    "start-vue": "webpack-dev-server --config webpack.vue.js --env.mode=development --mode development --open --hot"
   },
   "license": "ISC",
   "dependencies": {
-    "@mdx-js/react": "^1.6.21",
+    "@mdx-js/react": "^1.6.22",
+    "@mdx-js/vue": "^1.6.22",
     "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -26,6 +28,8 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.9.4",
     "@mdx-js/loader": "^1.6.21",
+    "@mdx-js/vue-loader": "1.6.22",
+    "@vue/babel-preset-app": "4.5.9",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

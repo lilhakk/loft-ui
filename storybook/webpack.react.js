@@ -1,22 +1,30 @@
 const path = require('path');
-const fs = require('fs');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
+const babelOptions = {
+  presets: [
+    '@babel/preset-react',
+    '@babel/preset-env'
+  ],
+  plugins: [
+    '@babel/plugin-transform-react-jsx',
+    ['@babel/plugin-transform-runtime', { 'regenerator': true }],
+    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+    '@babel/proposal-optional-chaining',
+    '@babel/proposal-nullish-coalescing-operator'
+  ]
+};
 
 module.exports = env=> {
   const isEnvDevelopment = env === 'development';
 
-  console.log(path.join(__dirname, './src'));
-  console.log(path.join(__dirname, '../packages/react'));
-
   const plugins = [
     new ErrorOverlayPlugin(),
-    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       minify: { collapseWhitespace: true }
@@ -30,24 +38,17 @@ module.exports = env=> {
 
   return {
     name: 'src',
-    entry: './src/index.js',
+    entry: './src/react/index.js',
     output: {
       filename: 'bundle.js',
-      path: path.join(__dirname, './build'),
+      path: path.join(__dirname, './build/react'),
       publicPath: '/'
     },
     resolve: {
-      alias: {
-        vue: 'vue/dist/vue.esm.js'
-      },
-      extensions: ['.js', '.jsx', '.vue', '.json']
+      extensions: ['.js', '.jsx', '.json']
     },
     module: {
       rules: [
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader'
-        },
         {
           test: /(\.js|\.jsx)$/,
           include: [
@@ -55,19 +56,12 @@ module.exports = env=> {
             path.join(__dirname, '../packages/react')
           ],
           loader: 'babel-loader',
-          options: {
-            ...JSON.parse(fs.readFileSync(path.resolve(__dirname, './.babelrc')))
-          }
+          options: babelOptions
         },
         {
           test: /\.mdx?$/,
           use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                ...JSON.parse(fs.readFileSync(path.resolve(__dirname, './.babelrc')))
-              }
-            },
+            { loader: 'babel-loader', options: babelOptions },
             '@mdx-js/loader'
           ]
         },

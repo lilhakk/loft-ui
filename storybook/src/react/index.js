@@ -5,15 +5,13 @@ import { MDXProvider } from '@mdx-js/react';
 import mdxComponents from './components/mdxComponents';
 import App from './App';
 
-export default function initReact() {
-  const rootComponent = (
-    <BrowserRouter>
-      <MDXProvider components={mdxComponents}>
-        <App />
-      </MDXProvider>
-    </BrowserRouter>
-  );
+const rootComponent = (
+  <BrowserRouter>
+    <MDXProvider components={mdxComponents}>
+      <App />
+    </MDXProvider>
+  </BrowserRouter>
+);
 
-  const rootElement = document.getElementById('root');
-  render(rootComponent, rootElement);
-}
+const rootElement = document.getElementById('root');
+render(rootComponent, rootElement);
