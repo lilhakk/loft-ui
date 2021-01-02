@@ -1,6 +1,6 @@
 <script>
   import VueRouter from 'vue-router';
-  import Sidebar from './components/Sidebar';
+  import Sidebar from './Sidebar';
   import * as components from '@loft-ui/vue';
   import s from '../index.scss';
 
@@ -10,7 +10,7 @@
     routes: Object.keys(components).map(key => {
       return {
         path: `/vue/${key}`,
-        component: components[key].guide
+        component: components[key].Guide
       }
     })
   });
@@ -26,6 +26,6 @@
 <template>
   <main>
     <Sidebar />
-    <router-view v-bind:class="s.root"></router-view>
+    <router-view class="root"></router-view>
   </main>
 </template>

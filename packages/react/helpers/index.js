@@ -1,4 +1,5 @@
-import { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
+import Prism from 'prismjs';
 // import ResizeObserver from "resize-observer-polyfill";
 
 export * from '../../../helpers';
@@ -35,3 +36,24 @@ export const useResize = (ref, callback, update = [])=> {
 export const useId = ()=> {
   return useMemo(()=> randomString(16), []);
 };
+
+export function Code ({ v }) {
+  const ref = useRef();
+
+  useEffect(() => {
+    const code = v.replace(/    /gi, '').trim();
+    const html = Prism.highlight(code, Prism.languages.jsx, 'language-jsx');
+    ref.current.innerHTML = html;
+  }, []);
+
+  return (
+    <pre className="language-jsx">
+      <code ref={ref} className="language-jsx" />
+    </pre>
+  );
+
+}
+
+export function InlineCode ({ children }) {
+  return <code className="inline_code">{children}</code>
+}
