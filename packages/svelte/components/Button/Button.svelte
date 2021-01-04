@@ -4,27 +4,26 @@
   import c from 'clsx';
   import s from './index.scss';
 
-  const propStyle = $$props.style;
-  const propClass = $$props.class;
-  // export let propTo = '';
-  export let propSize = $$props.size || 'm';
-  export let propVariant = $$props.variant || 'default';
-  export let propLoading = $$props.loading || false;
+  export let style = '';
+  export let size = 'm';
+  export let variant = 'default';
+  export let loading = false;
+  // export let to = '';
 
   const dispatch = createEventDispatcher();
-  const classes = c(s.button, s[propVariant], s[propSize], propClass);
+  const classes = c(s.button, s[variant], s[size], $$props.class);
 </script>
 
-{#if propLoading}
+{#if loading}
   <div
-    style={propStyle}
-    class={c(s.button, s.load, s.m, propClass)}
+    style={style}
+    class={c(s.button, s.load, s.m)}
   >
     <Loader variant='dots' />
   </div>
 {:else}
   <div
-    style={propStyle}
+    style={style}
     class={classes}
     on:click={()=> dispatch('click')}
   >

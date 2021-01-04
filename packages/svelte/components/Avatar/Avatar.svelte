@@ -2,16 +2,15 @@
   import c from 'clsx';
   import s from './index.scss';
 
-  let propStyle = $$props.style || '';
-  const propClass = $$props.class;
-  export let propSrc = $$props.src || '';
-  export let propSize = $$props.size || 'm';
-  export let propShape = $$props.shape || 'circle';
+  export let style = '';
+  export let src = '';
+  export let size = 'm';
+  export let shape = 'circle';
 
-  if (propSrc) propStyle += `background-image: url(${propSrc});`;
+  if (src) style += `background-image: url(${src});`;
 </script>
 
 <div
-  class={c(s.avatar, s[propSize], s[propShape], propClass)}
-  style={propStyle}
+  class={c(s.avatar, s[size], s[shape], $$props.class)}
+  style={style}
 />

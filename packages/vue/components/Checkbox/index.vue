@@ -6,10 +6,7 @@
     name: 'Checkbox',
     Guide,
     props: {
-      selected: {
-        type: Boolean,
-        default: false
-      }
+      selected: { type: Boolean, default: false }
     },
     data() {
       return { s };
