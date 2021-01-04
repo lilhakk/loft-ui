@@ -6,7 +6,6 @@
 
   const router = new VueRouter({
     mode: 'history',
-    base: __dirname,
     routes: Object.keys(components).map(key => {
       return {
         path: `/vue/${key}`,

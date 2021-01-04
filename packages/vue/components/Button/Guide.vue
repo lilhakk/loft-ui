@@ -32,7 +32,7 @@
       data: () => ({ count: 0 }),
       template: `
         <Button @click.native='count++'>
-          Clicked ##count%% times!
+          Clicked <<count>> times!
         </Button>
       `
     " />
@@ -55,9 +55,9 @@
     <h2>Загрузка</h2>
     <p>Проп <I>loading</I> отвечает за статус загрузки. По умолчанию - <I>false</I></p>
     <Code
-      v="<Button loading={true}>Loading</Button>"
+      v='<Button loading="true">Loading</Button>'
       lang="html"
     />
-    <Button loading={true}>Loading</Button>
+    <Button loading="true">Loading</Button>
   </div>
 </template>

@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import * as components from '@loft-ui/react';
 import Sidebar from './Sidebar';
 
-// RouteMiddleware
 const Routers = ()=> {
   return (
     <main>

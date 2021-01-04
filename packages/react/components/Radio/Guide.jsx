@@ -1,26 +1,34 @@
-import { useState } from 'react'
-import Radio from './'
+import React, { useState } from 'react';
+import { Code, InlineCode as I } from '../../helpers';
+import Radio from './';
 
-/*
-# Radio
-```js
-import { Radio } from 'loft-ui'
-```
+export default function RadioGuide () {
 
-## Пример
-```jsx
-const [active, setActive] = useState(-1);
+  return (
+    <>
+      <h1>Radio</h1>
+      <Code v="import { Radio } from 'loft-ui'" />
 
-return (
-  <Radio value={active} onChange={v=> setActive(v)}>
-    <Radio.Item value={1}>Select 1</Radio.Item>
-    <Radio.Item value={2}>Select 2</Radio.Item>
-  </Radio>
-)
-```
+      <h2>Пример</h2>
+      <Code v={`
+        const [active, setActive] = useState(-1);
 
-export const Example = () => {
+        return (
+          <Radio value={active} onChange={v=> setActive(v)}>
+            <Radio.Item value={1}>Select 1</Radio.Item>
+            <Radio.Item value={2}>Select 2</Radio.Item>
+          </Radio>
+        )
+      `} />
+      <Example />
+    </>
+  )
+
+}
+
+function Example () {
   const [active, setActive] = useState(-1);
+
   return (
     <Radio value={active} onChange={v=> setActive(v)}>
       <Radio.Item value={1}>Select 1</Radio.Item>
@@ -28,6 +36,3 @@ export const Example = () => {
     </Radio>
   )
 }
-
-<Example />
-*/

@@ -1,26 +1,34 @@
-import { useState } from 'react'
-import Switch from './'
+import React, { useState } from 'react';
+import { Code, InlineCode as I } from '../../helpers';
+import Switch from './';
 
-/*
-# Switch
-```js
-import { Switch } from 'loft-ui'
-```
+export default function SwitchGuide () {
 
-## Пример
-```jsx
-const [selected, setSelected] = useState(false);
+  return (
+    <>
+      <h1>Switch</h1>
+      <Code v="import { Switch } from 'loft-ui'" />
 
-return (
-  <Switch
-    selected={selected}
-    onClick={()=> setSelected(!selected)}
-  />
-)
-```
+      <h2>Пример</h2>
+      <Code v={`
+        const [selected, setSelected] = useState(false);
 
-export const Example = () => {
+        return (
+          <Switch
+            selected={selected}
+            onClick={()=> setSelected(!selected)}
+          />
+        )
+      `} />
+      <Example />
+    </>
+  )
+
+}
+
+function Example () {
   const [selected, setSelected] = useState(false);
+
   return (
     <Switch
       selected={selected}
@@ -29,7 +37,3 @@ export const Example = () => {
   )
 }
 
-<Example />
-
-## Цвет
-*/

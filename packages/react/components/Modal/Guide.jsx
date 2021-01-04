@@ -1,18 +1,27 @@
-import { useState } from 'react'
-import Modal from './'
-import Button from '../Button'
+import React, { useState } from 'react';
+import { Code, InlineCode as I } from '../../helpers';
+import Button from '../Button';
+import Modal from './';
 
-/*
-# Modal
-Скрытая часть появляющаяся поверх всего. Как правило по середине
+export default function ModalGuide () {
 
-```js
-import { Modal } from 'loft-ui'
-```
+  return (
+    <>
+      <h1>Modal</h1>
+      <p>Скрытая часть появляющаяся поверх всего. Как правило по середине</p>
+      <Code v="import { Modal } from 'loft-ui'" />
 
-## Простой пример
-export const Example = () => {
-  const [visible, setVisible] = useState(false)
+      <h2>Простой пример</h2>
+      <Example />
+    </>
+  )
+
+}
+
+
+function Example () {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div>
       <Button onClick={() => setVisible(true)}>Открыть</Button>
@@ -36,7 +45,5 @@ export const Example = () => {
       </Modal>
     </div>
   )
-}
 
-<Example />
-*/
+}

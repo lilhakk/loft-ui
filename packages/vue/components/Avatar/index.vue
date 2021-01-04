@@ -6,29 +6,24 @@
     Guide,
     name: 'Avatar',
     props: {
-      size: String,
-      shape: String,
+      size: { type: String, default: 'm' },
+      shape: { type: String, default: 'circle' },
       src: String
     },
-    methods: {
-      getStyle() {
-        let style = '';
-        if (this.$props.src) {
-          style = `background-image: url(${this.$props.src})`;
-        }
-
-        return style;
+    data() {
+      let style = '';
+      if (this.$props.src) {
+        style = `background-image: url(${this.$props.src})`;
       }
-    },
-    data: () => {
-      return { s }
+
+      return { s, style }
     }
   }
 </script>
 
 <template>
   <div
-    :class="[s.avatar, s[size || 'm'], s[shape || 'circle']]"
-    :style="getStyle()"
+    :class="[s.avatar, s[size], s[shape]]"
+    :style="style"
   />
 </template>

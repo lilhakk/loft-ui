@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import Rating from './'
+import React, { useState } from 'react';
+import { Code, InlineCode as I } from '../../helpers';
+import Rating from './';
 
-/*
-# Rating
-```js
-import { Rating } from 'loft-ui'
-```
+export default function RatingGuide () {
 
-## Пример
+  return (
+    <>
+      <h1>Rating</h1>
+      <Code v="import { Rating } from 'loft-ui'" />
 
-<Rating />
-*/
+      <h2>Пример</h2>
+      <Rating />
+    </>
+  )
+
+}

@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
-import Checkbox from './'
 import { Code, InlineCode as I } from '../../helpers';
+import Checkbox from './'
 
-export default function AvatarGuide () {
+export default function CheckboxGuide () {
 
   return (
     <>
       <h1>Checkbox</h1>
       <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
-      <Code>{`
-        import { Checkbox } from 'loft-ui'
-      `}</Code>
+      <Code v="import { Checkbox } from 'loft-ui'" />
 
       <h2>Пример</h2>
-      <Code>{`
+      <Code v={`
         const [selected, setSelected] = useState(false);
 
         return (
@@ -22,7 +20,7 @@ export default function AvatarGuide () {
             onClick={()=> setSelected(!selected)}
           >Example</Checkbox>
         )
-      `}</Code>
+      `} />
       <Example />
     </>
   )

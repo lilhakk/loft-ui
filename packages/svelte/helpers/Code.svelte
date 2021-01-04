@@ -1,8 +1,23 @@
 <script>
+  import Prism from 'prismjs';
+  import { onMount } from 'svelte';
+
   export let v;
-  export let lang = 'js';
+  export let lang = 'svelte';
+  let ref;
+
+  onMount(()=> {
+    Prism.highlightElement(ref);
+  });
+
+  const code = v
+    .replace(/  (.*)/gi, '$1')
+    .trim();
 </script>
 
 <pre class={'language-' + lang}>
-  <code class={'language-' + lang}>{v}</code>
+  <code
+    bind:this={ref}
+    class={'language-' + lang}
+  >{code}</code>
 </pre>

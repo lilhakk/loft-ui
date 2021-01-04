@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useEffect } from 'react';
 import Prism from 'prismjs';
 // import ResizeObserver from "resize-observer-polyfill";
 
-export * from '../../../helpers';
 export { default as c } from 'clsx';
 
 export const useMutation = (ref, callback, update = [])=> {
@@ -33,22 +32,39 @@ export const useResize = (ref, callback, update = [])=> {
   }, [!!ref.current, ...update]);
 };
 
+// remove
+const randomString = length=> {
+  let res = '';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charsLength = chars.length;
+  for (let i = 0; i < length; i++) {
+    res += chars.charAt(Math.floor(Math.random() * charsLength));
+  }
+  return res;
+};
+
+// remove
 export const useId = ()=> {
   return useMemo(()=> randomString(16), []);
 };
 
-export function Code ({ v }) {
+export function Code ({ v, lang = 'jsx' }) {
   const ref = useRef();
 
   useEffect(() => {
-    const code = v.replace(/    /gi, '').trim();
-    const html = Prism.highlight(code, Prism.languages.jsx, 'language-jsx');
-    ref.current.innerHTML = html;
+    Prism.highlightElement(ref.current);
   }, []);
 
+  const code = v
+    .replace(/        (.*)/gi, '$1')
+    .trim();
+
   return (
-    <pre className="language-jsx">
-      <code ref={ref} className="language-jsx" />
+    <pre className={'language-' + lang}>
+      <code
+        ref={ref}
+        className={'language-' + lang}
+      >{code}</code>
     </pre>
   );
 

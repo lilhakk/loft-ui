@@ -1,20 +1,27 @@
-import { useState } from 'react'
-import Collapse from './'
+import React, { useState } from 'react'
+import { Code, InlineCode as I } from '../../helpers';
 import Button from '../Button'
+import Collapse from './'
 
-/*
-# Collapse
-Компонент чтобы скрыть содержимое и отображать по событию
+export default function CollapseGuide () {
 
-```js
-import { Collapse } from 'loft-ui'
-```
+  return (
+    <>
+      <h1>Collapse</h1>
+      <p>Компонент чтобы скрыть содержимое и отображать по событию</p>
+      <Code v="import { Collapse } from 'loft-ui'" />
 
-## Пример
+      <h2>Пример</h2>
+      <Example />
+    </>
+  )
 
-export const Example = () => {
-  const [visible, setVisible] = useState(false)
-  const [visible2, setVisible2] = useState(false)
+}
+
+function Example () {
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+
   return (
     <>
       <Collapse visible={visible}>
@@ -32,12 +39,10 @@ export const Example = () => {
           </Button>
         </div>
       </Collapse>
+
       <Button onClick={()=> setVisible(!visible)}>
         {visible ? 'Скрыть' : 'Показать'}
       </Button>
     </>
   )
 }
-
-<Example />
-*/

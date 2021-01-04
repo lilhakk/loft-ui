@@ -1,16 +1,21 @@
 <script>
   import { Router, Route } from 'svelte-routing';
-  import { Button } from '@loft-ui/svelte';
   import Sidebar from './Sidebar';
+  import * as components from '@loft-ui/svelte';
 
   let url = '';
 </script>
 
 <main>
-  <Sidebar />
-  <div class="root">
-    <Router url="{url}">
-      <Route path="/svelte/button" component="{Button.Guide}" />
-    </Router>
-  </div>
+  <Router url="{url}">
+    <Sidebar />
+    <div class="root">
+      {#each Object.keys(components) as key}
+        <Route
+          path={'/svelte/' + key.toLowerCase()}
+          component="{components[key].Guide}"
+        />
+      {/each}
+    </div>
+  </Router>
 </main>

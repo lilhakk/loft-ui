@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as components from '@loft-ui/react';
-import s from './index.scss';
+import s from '../index.scss';
 
 export default function Sidebar() {
 

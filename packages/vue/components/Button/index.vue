@@ -1,16 +1,18 @@
 <script>
   import Guide from './Guide';
+  import Loader from '../Loader';
   import s from './index.scss';
 
   export default {
     Guide,
     name: 'Button',
+    components: { Loader },
     props: {
-      size: String,
-      variant: String,
-      loading: Boolean
+      size: { type: String, default: 'm' },
+      variant: { type: String, default: 'default' },
+      loading: { type: Boolean, default: false }
     },
-    data: () => {
+    data() {
       return { s }
     }
   }
@@ -18,8 +20,16 @@
 
 <template>
   <div
-    :class="[s.button, s[size || 'm'], s[variant || 'default']]"
+    v-if="loading"
+    :class="[s.button, s.load, s.m]"
   >
-    <slot></slot>
+    <Loader variant='dots' />
+  </div>
+
+  <div
+    v-else
+    :class="[s.button, s[size], s[variant]]"
+  >
+     <slot></slot>
   </div>
 </template>

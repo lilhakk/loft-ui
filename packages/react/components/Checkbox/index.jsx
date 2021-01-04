@@ -11,12 +11,13 @@ function Checkbox({
 }) {
   return (
     <div
+      onClick={onClick}
       className={c(s.checkbox, { [s.active]: selected })}
     >
-      <div className={s.iconCase} onClick={onClick}>
+      <div className={s.iconCase}>
         <div className={s.icon} />
       </div>
-      <div className={s.label} onClick={onClick}>{children}</div>
+      <div className={s.label}>{children}</div>
     </div>
   );
 };

@@ -1,29 +1,36 @@
-import { useState } from 'react'
-import Pagination from './'
+import React, { useState } from 'react';
+import { Code, InlineCode as I } from '../../helpers';
+import Pagination from './';
 
-/*
-# Pagination
-Компонент для переключения между частями контента
+export default function PaginationGuide () {
 
-```js
-import { Pagination } from 'loft-ui'
-```
+  return (
+    <>
+      <h1>Pagination</h1>
+      <p>Компонент для переключения между частями контента</p>
+      <Code v="import { Pagination } from 'loft-ui'" />
 
-## Пример
-```jsx
-const [page, setPage] = useState('');
+      <h2>Пример</h2>
+      <Code v={`
+        const [page, setPage] = useState('');
 
-return (
-  <Pagination
-    count={10}
-    page={page}
-    onChange={v=> setPage(v)}
-  />
-)
-```
+        return (
+          <Pagination
+            count={10}
+            page={page}
+            onChange={v=> setPage(v)}
+          />
+        )
+      `} />
+      <Example />
+    </>
+  )
 
-export const Example = () => {
+}
+
+function Example () {
   const [page, setPage] = useState(3);
+
   return (
     <Pagination
       count={10}
@@ -32,6 +39,3 @@ export const Example = () => {
     />
   )
 }
-
-<Example />
-*/

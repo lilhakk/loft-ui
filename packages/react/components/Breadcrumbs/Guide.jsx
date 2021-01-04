@@ -8,16 +8,16 @@ export default function AvatarGuide () {
     <>
       <h1>Breadcrumbs</h1>
       <p>Хлебные крошки, используются для того чтобы пользователь лучше понимал локацию местонахождения на сайте</p>
-      <Code>{`import { Breadcrumbs } from 'loft-ui'`}</Code>
+      <Code v="import { Breadcrumbs } from 'loft-ui'" />
 
       <h2>Простой пример</h2>
-      <Code>{`
+      <Code v={`
         <Breadcrumbs>
           <Breadcrumbs.Item link='/'>Главная</Breadcrumbs.Item>
           <Breadcrumbs.Item link='/menu'>Меню</Breadcrumbs.Item>
           <Breadcrumbs.Item link='/menu/salads'>Салаты</Breadcrumbs.Item>
         </Breadcrumbs>
-      `}</Code>
+      `} />
       <Breadcrumbs
         data={[
           { link: '/breadcrumbs', title: 'Главная' },
@@ -28,7 +28,7 @@ export default function AvatarGuide () {
 
       <h2>Кастомный сепаратор</h2>
       <p>Можно применить любой разделитель с помощью jsx</p>
-      <Code>{`
+      <Code v={`
         const style = {
           width: '8px',
           height: '8px',
@@ -42,7 +42,7 @@ export default function AvatarGuide () {
           <Breadcrumbs.Item link='/menu'>Меню</Breadcrumbs.Item>
           <Breadcrumbs.Item link='/menu/salads'>Салаты</Breadcrumbs.Item>
         </Breadcrumbs>
-      `}</Code>
+      `} />
       <ExampleSeparator />
     </>
   )

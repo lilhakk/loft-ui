@@ -1,4 +1,5 @@
 import App from './App';
+import 'prism-svelte';
 
 export default function initSvelte () {
 

@@ -1,17 +1,25 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { Code, InlineCode as I } from '../../helpers';
 import Drawer from './'
 import Button from '../Button'
 
-/*
-# Drawer
+export default function DrawerGuide () {
 
-```js
-import { Drawer } from 'loft-ui'
-```
+  return (
+    <>
+      <h1>Drawer</h1>
+      <Code v="import { Drawer } from 'loft-ui'" />
 
-## Пример
-export const Example = () => {
+      <h2>Пример</h2>
+      <Example />
+    </>
+  )
+
+}
+
+function Example () {
   const [visible, setVisible] = useState(false);
+
   return (
     <>
       <Button onClick={()=> setVisible(true)}>Открыть</Button>
@@ -24,6 +32,3 @@ export const Example = () => {
     </>
   )
 }
-
-<Example />
-*/
