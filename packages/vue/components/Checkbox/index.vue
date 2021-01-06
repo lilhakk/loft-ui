@@ -8,9 +8,7 @@
     props: {
       selected: { type: Boolean, default: false }
     },
-    data() {
-      return { s };
-    }
+    data: ()=> ({ s })
   }
 </script>
 

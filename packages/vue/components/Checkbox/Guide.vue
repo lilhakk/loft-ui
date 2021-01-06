@@ -9,7 +9,7 @@
         this.actives = [...this.actives];
       }
     },
-    data: () => ({ actives: [false, true] }),
+    data: ()=> ({ actives: [false, true] }),
     template: `
       <div>
         <Checkbox
@@ -42,7 +42,7 @@
     <h2>Пример</h2>
     <Code v="
       components: { Checkbox },
-      data: () => ({ selected: false }),
+      data: ()=> ({ selected: false }),
       template: `
         <Checkbox
           :selected='selected'
