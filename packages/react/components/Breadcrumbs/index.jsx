@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Separator from './Separator';
 import Guide from './Guide';
-import { c } from '../../helpers';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Breadcrumbs/index.scss';
 
 // Breadcrumbs.Item
 function Breadcrumbs({

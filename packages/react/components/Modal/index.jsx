@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Portal from '../Portal';
 import Guide from './Guide';
 import { c } from '../../helpers';
-import s from './index.scss';
+import s from '../../../common/Modal/index.scss';
 
 let MOUSE_POS = {};
 

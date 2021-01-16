@@ -1,7 +1,7 @@
 <script>
   import Guide from './Guide';
   import Loader from '../Loader';
-  import s from './index.scss';
+  import s from '../../../common/Button/index.scss';
 
   export default {
     Guide,
@@ -12,9 +12,7 @@
       variant: { type: String, default: 'default' },
       loading: { type: Boolean, default: false }
     },
-    data() {
-      return { s }
-    }
+    data: ()=> ({ s })
   }
 </script>
 

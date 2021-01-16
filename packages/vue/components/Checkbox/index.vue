@@ -1,6 +1,6 @@
 <script>
   import Guide from './Guide';
-  import s from './index.scss';
+  import s from '../../../common/Checkbox/index.scss';
 
   export default {
     name: 'Checkbox',

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Loader from '../Loader';
 import PropTypes from 'prop-types';
 import Guide from './Guide';
-import { c } from '../../helpers';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Button/index.scss';
 
 function Button({
   className,

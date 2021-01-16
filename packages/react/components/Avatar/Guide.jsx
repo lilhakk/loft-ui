@@ -1,6 +1,7 @@
 import React from 'react';
 import Avatar from './';
 import { Code, InlineCode as I } from '../../helpers';
+import s from '../../../common/Avatar/guide.scss';
 
 export default function AvatarGuide () {
 
@@ -13,7 +14,7 @@ export default function AvatarGuide () {
       <h2>Простой пример</h2>
       <p>Если никаких параметров не установлено, отображается fallback картинка</p>
       <Code v={`<Avatar />`} />
-      <Avatar style={{ backgroundColor: '#eee' }} />
+      <Avatar className={s.bg} />
 
       <h2>Ссылка на изображение</h2>
       <p>Чтобы применить изображение, нужно передать ссылку в проп <I>src</I></p>
@@ -29,10 +30,10 @@ export default function AvatarGuide () {
         <Avatar size='s' />
       `} />
       <div style={{ display: 'flex' }}>
-        <Avatar size='xl' style={{ backgroundColor: '#eee', marginRight: 8 }} />
-        <Avatar size='l' style={{ backgroundColor: '#eee', marginRight: 8 }} />
-        <Avatar size='m' style={{ backgroundColor: '#eee', marginRight: 8 }} />
-        <Avatar size='s' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+        <Avatar size='xl' className={s.bgWithMargin} />
+        <Avatar size='l' className={s.bgWithMargin} />
+        <Avatar size='m' className={s.bgWithMargin} />
+        <Avatar size='s' className={s.bgWithMargin} />
       </div>
 
       <h2>Форма</h2>
@@ -42,10 +43,10 @@ export default function AvatarGuide () {
         <Avatar shape='square' />
       `} />
       <div style={{ display: 'flex' }}>
-        <Avatar shape='circle' style={{ backgroundColor: '#eee', marginRight: 8 }} />
-        <Avatar shape='square' style={{ backgroundColor: '#eee', marginRight: 8 }} />
+        <Avatar shape='circle' className={s.bgWithMargin} />
+        <Avatar shape='square' className={s.bgWithMargin} />
       </div>
     </div>
-  )
+  );
 
 };

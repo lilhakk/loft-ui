@@ -11,7 +11,7 @@ export default function CollapseGuide () {
       <p>Компонент чтобы скрыть содержимое и отображать по событию</p>
       <Code v="import { Collapse } from 'loft-ui'" />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Example />
     </>
   )

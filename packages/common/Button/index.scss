@@ -4,25 +4,25 @@
   line-height: 19px;
   align-items: center;
   text-align: center;
-  border: 1px solid #3155da;
+  border: 1px solid #7367f0;
   border-radius: 6px;
   box-sizing: border-box;
   text-decoration: none;
   color: #fff;
   transition: 0.3s;
-  background-color: #3155da;
+  background-color: #7367f0;
   cursor: pointer;
   display: table;
 
   &:hover {
-    color: #3155da;
+    color: #7367f0;
     background-color: transparent;
   }
 }
 
 .load {
   background-color: transparent;
-  height: 41px;
+  height: 37px;
   align-items: center;
   display: flex;
   max-width: max-content;
@@ -44,14 +44,14 @@
 }
 
 .text {
-  color: #999;
+  color: #555555;
   border-color: transparent;
   background-color: transparent;
 
   &:hover {
-    color: #333;
+    color: #333333;
     border-color: transparent;
-    background-color: #f3f5fd;
+    background-color: #f7f7fb;
   }
 }
 
@@ -60,5 +60,5 @@
 }
 
 .s {
-  padding: 6px 16px;
+  padding: 2px 8px;
 }

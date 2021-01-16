@@ -10,7 +10,7 @@ export default function PaginationGuide () {
       <p>Компонент для переключения между частями контента</p>
       <Code v="import { Pagination } from 'loft-ui'" />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Code v={`
         const [page, setPage] = useState('');
 

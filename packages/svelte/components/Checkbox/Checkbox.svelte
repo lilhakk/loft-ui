@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import c from 'clsx';
-  import s from './index.scss';
+  import s from '../../../common/Checkbox/index.scss';
 
   export let selected = false;
 

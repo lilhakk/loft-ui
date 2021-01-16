@@ -35,8 +35,9 @@ pre {
 }
 
 [class="inline_code"] {
-  background-color: #dde8f5;
   padding: 2px 6px;
+  border: 1px solid #efedf5;
+  background-color: #fafaff;
 }
 
 [class="root"] {
@@ -78,12 +79,12 @@ pre {
 }
 
 .navItemActive {
-  border-color: #3056da;
+  border-color: #7367f0;
 }
 
 .sidebar {
   width: 240px;
-  background-color: #f4f5f7;
+  border-right: 2px solid #f4f5f7;
 }
 
 .sidebarItem {
@@ -92,9 +93,15 @@ pre {
   padding: 16px;
   text-decoration: none;
   cursor: pointer;
+  transition: 0.2s all;
+  font-size: 14px;
+
+  &:not(.sidebarItemActive):hover {
+    color: #7367f0;
+  }
 }
 
 .sidebarItemActive {
   color: #fff;
-  background-color: #3155da;
+  background-color: #7367f0;
 }

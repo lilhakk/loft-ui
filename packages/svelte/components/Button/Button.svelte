@@ -2,7 +2,7 @@
   import { createEventDispatcher } from 'svelte';
   import Loader from '../Loader/Loader';
   import c from 'clsx';
-  import s from './index.scss';
+  import s from '../../../common/Button/index.scss';
 
   export let style = '';
   export let size = 'm';

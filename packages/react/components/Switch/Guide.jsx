@@ -9,7 +9,7 @@ export default function SwitchGuide () {
       <h1>Switch</h1>
       <Code v="import { Switch } from 'loft-ui'" />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Code v={`
         const [selected, setSelected] = useState(false);
 

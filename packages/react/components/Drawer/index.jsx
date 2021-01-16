@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Guide from './Guide';
-import s from './index.scss';
+import s from '../../../common/Drawer/index.scss';
 
 const EL_ROOT = document.getElementById('root');
 

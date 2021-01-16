@@ -1,6 +1,6 @@
 <script>
   import c from 'clsx';
-  import s from './index.scss';
+  import s from '../../../common/Loader/index.scss';
 
   export let style = '';
   export let variant = 'circle';

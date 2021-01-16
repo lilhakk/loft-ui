@@ -1,6 +1,6 @@
 <script>
   import Guide from './Guide';
-  import s from './index.scss';
+  import s from '../../../common/Avatar/index.scss';
 
   export default {
     Guide,

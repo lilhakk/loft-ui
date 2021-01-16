@@ -10,7 +10,7 @@ export default function AvatarGuide () {
       <p>Кнопка - элемент при нажатии на которую происходит какое-то действие</p>
       <Code v={`import { Button } from 'loft-ui'`} />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Code v={`
         const [count, setCount] = useState(0);
 

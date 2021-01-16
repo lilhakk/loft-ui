@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Guide from './Guide';
-import { c } from '../../helpers';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Avatar/index.scss';
 
 function Avatar({
   className,
@@ -16,7 +16,7 @@ function Avatar({
 
   return (
     <div
-      className={c(s.avatar, s[size], s[shape], className)}
+      className={c(className, s.avatar, s[size], s[shape])}
       style={_style}
     />
   );

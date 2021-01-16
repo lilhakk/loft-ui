@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Guide from './Guide';
 import { c } from '../../helpers';
-import s from './index.scss';
+import s from '../../../common/Loader/index.scss';
 
 function Loader({
   variant,

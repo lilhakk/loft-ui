@@ -9,7 +9,7 @@ export default function RatingGuide () {
       <h1>Rating</h1>
       <Code v="import { Rating } from 'loft-ui'" />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Rating />
     </>
   )

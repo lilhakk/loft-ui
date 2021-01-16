@@ -9,7 +9,7 @@ export default function RadioGuide () {
       <h1>Radio</h1>
       <Code v="import { Radio } from 'loft-ui'" />
 
-      <h2>Пример</h2>
+      <h2>Простой пример</h2>
       <Code v={`
         const [active, setActive] = useState(-1);
 
