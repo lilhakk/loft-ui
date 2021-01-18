@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactCSSTransitionGroup from 'react-transition-group';
 // import Button from '../Button';
 import Portal from '../Portal';
 import Guide from './Guide';
@@ -100,7 +101,7 @@ function Modal({
         step !== 'close' &&
         <>
           <div className={s.overlay} onClick={onDismiss} />
-          <div
+          <ReactTransitionGroup
             className={c(s.modal, { [s.show]: step === 'show' }, className)}
             style={_style}
           >
@@ -121,7 +122,7 @@ function Modal({
                 <div></div>
               }
             </div>
-          </div>
+          </ReactTransitionGroup>
         </>
       }
     </Portal>
