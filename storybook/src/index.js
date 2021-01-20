@@ -4,16 +4,19 @@ import initSvelte from './svelte';
 import s from './index.scss';
 import './prism.css'
 
-if (window.location.pathname.split('/')[1] === 'react') {
+const frameworkLocation = window.location.pathname.split('/')[1]
+
+if (frameworkLocation === 'react') {
   initReact();
-} else if (window.location.pathname.split('/')[1] === 'vue') {
+} else if (frameworkLocation === 'vue') {
   initVue();
-} else if (window.location.pathname.split('/')[1] === 'svelte') {
+} else if (frameworkLocation === 'svelte') {
   initSvelte();
 }
 
 function addNav() {
   const nav = document.createElement('div');
+  if (!frameworkLocation) nav.classList.add(s.navMain);
   nav.classList.add(s.nav);
 
   const itemReact = document.createElement('a');

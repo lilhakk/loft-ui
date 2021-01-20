@@ -105,3 +105,21 @@ pre {
   color: #fff;
   background-color: #7367f0;
 }
+
+.navMain {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+
+  .navItem {
+    margin: 0 16px;
+    width: 90px;
+    height: 90px;
+    border: 3px solid #f4f5f7;
+    margin-bottom: 36px;
+  }
+}
