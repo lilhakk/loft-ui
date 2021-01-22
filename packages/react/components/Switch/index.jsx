@@ -1,7 +1,7 @@
 import React from 'react';
-import { c } from '../../helpers';
 // import PropTypes from 'prop-types';
 import Guide from './Guide';
+import c from 'clsx';
 import s from './index.scss';
 
 function Switch({

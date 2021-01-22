@@ -33,7 +33,7 @@ code[class*="language-"]::mozselection {
 }
 pre[class*="language-"] {
   padding: 1em;
-  margin: .5em 0;
+  margin: 0 0 16px;
   overflow: auto;
   background: #fafaff;
   border: 1px solid #efedf5;

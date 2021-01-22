@@ -4,7 +4,7 @@
 
   export default {
     Guide,
-    name: 'Pagination',
+    name: 'l-pagination',
     props: {
       count: { type: Number, default: 5 },
       page: { type: Number, default: 1 },
@@ -45,31 +45,21 @@
     </div>
 
     <div :class="s.list">
-      <div
-        :class="s.item"
-        v-if="numbersPage[0] !== 1"
-        v-on:click="onChange(1)"
-      >1</div>
-      <div
-        :class="[s.item, s.itemPure]"
-        v-if="numbersPage[0] !== 1"
-      >..</div>
+      <template v-if="numbersPage[0] !== 1">
+        <div :class="s.item" v-on:click="onChange(1)">1</div>
+        <div :class="[s.item, s.itemPure]">..</div>
+      </template>
 
       <div
         :class="[s.item, { [s.active]: page === number }]"
-        v-for="number in numbersPage"
+        v-for="number, index in numbersPage"
         v-on:click="onChange(number)"
       >{{number}}</div>
 
-      <div
-        :class="[s.item, s.itemPure]"
-        v-if="numbersPage[numbersPage.length - 1] !== count"
-      >..</div>
-      <div
-        :class="s.item"
-        v-if="numbersPage[numbersPage.length - 1] !== count"
-        v-on:click="onChange(count)"
-      >{{count}}</div>
+      <template v-if="numbersPage[numbersPage.length - 1] !== count">
+        <div :class="[s.item, s.itemPure]">..</div>
+        <div :class="s.item" v-on:click="onChange(count)">{{count}}</div>
+      </template>
     </div>
 
     <div :class="[s.paginationFastLink, { [s.paginationHide]: page === count }]">

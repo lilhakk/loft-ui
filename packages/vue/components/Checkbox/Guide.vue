@@ -2,7 +2,7 @@
   import { Code, InlineCode as I } from '../../helpers';
 
   const Example = {
-    components: { Checkbox: () => import('./') },
+    components: { 'l-checkbox': () => import('./') },
     methods: {
       changeActive(index) {
         this.actives[index] = !this.actives[index];
@@ -12,14 +12,14 @@
     data: ()=> ({ actives: [false, true] }),
     template: `
       <div>
-        <Checkbox
+        <l-checkbox
           :selected="actives[0]"
           @click.native="()=> changeActive(0)"
-        >Default</Checkbox>
-        <Checkbox
+        >Default</l-checkbox>
+        <l-checkbox
           :selected='actives[1]'
           @click.native="()=> changeActive(1)"
-        >Checked</Checkbox>
+        >Checked</l-checkbox>
       </div>
     `
   };
@@ -28,7 +28,7 @@
     components: {
       I, Code,
       Example,
-      Checkbox: () => import('./')
+      'l-checkbox': () => import('./')
     }
   }
 </script>
@@ -37,17 +37,16 @@
   <div>
     <h1>Checkbox</h1>
     <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
-    <Code v="import { Checkbox } from 'loft-ui'" />
+    <Code v="import { l-checkbox } from 'loft-ui'" />
 
     <h2>Пример</h2>
     <Code v="
-      components: { Checkbox },
       data: ()=> ({ selected: false }),
       template: `
-        <Checkbox
+        <l-checkbox
           :selected='selected'
           @click.native='selected = !selected'
-        >Example</Checkbox>
+        >Example</l-checkbox>
       `
     " />
     <Example />

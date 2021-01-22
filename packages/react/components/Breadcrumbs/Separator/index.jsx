@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './index.scss';
+import s from '../../../../common/Breadcrumbs/Separator/index.scss';
 
 export default function Separator({ separator }) {
 

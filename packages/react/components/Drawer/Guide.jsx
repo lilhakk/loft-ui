@@ -8,7 +8,7 @@ export default function DrawerGuide () {
   return (
     <>
       <h1>Drawer</h1>
-      <Code v="import { Drawer } from 'loft-ui'" />
+      <Code v="import { Drawer } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Example />

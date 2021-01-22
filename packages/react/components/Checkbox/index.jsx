@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Guide from './Guide';
-import { c } from '../../helpers';
+import c from 'clsx';
 import s from '../../../common/Checkbox/index.scss';
 
 function Checkbox({

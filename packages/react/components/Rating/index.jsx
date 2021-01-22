@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Guide from './Guide';
-import { c } from '../../helpers';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Rating/index.scss';
 
-// isHalf
-// classIcon
-// classIconActive
-// classIconSelect
-/*
-  {
-    value,
-    total,
-    count,
-    onChange
-  }
-*/
-
-function Rating() {
+function Rating({
+  value,
+  total,
+  count,
+  isHalf,
+  className,
+  classIcon,
+  classIconActive,
+  classIconSelect,
+  onChange
+}) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [hoverIndex, setHoverIndex] = useState(-1);
 

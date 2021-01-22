@@ -7,7 +7,7 @@ export default function RadioGuide () {
   return (
     <>
       <h1>Radio</h1>
-      <Code v="import { Radio } from 'loft-ui'" />
+      <Code v="import { Radio } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Code v={`

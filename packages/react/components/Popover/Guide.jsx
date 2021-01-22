@@ -7,7 +7,7 @@ export default function PopoverGuide () {
   return (
     <>
       <h1>Popover</h1>
-      <Code v="import { Popover } from 'loft-ui'" />
+      <Code v="import { Popover } from 'loft-ui';" />
 
     </>
   )

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { c, useResize } from '../../helpers';
+import { useResize } from '../../helpers';
 import Guide from './Guide';
+import c from 'clsx';
 import s from '../../../common/Collapse/index.scss';
 
 const STEPS = {

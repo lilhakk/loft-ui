@@ -1,7 +1,7 @@
 /* eslint-disable */
 export { default as Avatar_С } from './Avatar';
 export { default as Breadcrumbs_С } from './Breadcrumbs';
-export { default as Button } from './Button';
+export { default as Button_С } from './Button';
 export { default as Collapse_R } from './Collapse';
 export { default as Loader_С } from './Loader';
 export { default as Menu } from './Menu';

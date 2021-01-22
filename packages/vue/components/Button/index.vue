@@ -5,7 +5,7 @@
 
   export default {
     Guide,
-    name: 'Button',
+    name: 'l-button',
     components: { Loader },
     props: {
       size: { type: String, default: 'm' },

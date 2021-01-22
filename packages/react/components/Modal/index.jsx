@@ -3,7 +3,7 @@ import ReactCSSTransitionGroup from 'react-transition-group';
 // import Button from '../Button';
 import Portal from '../Portal';
 import Guide from './Guide';
-import { c } from '../../helpers';
+import c from 'clsx';
 import s from '../../../common/Modal/index.scss';
 
 let MOUSE_POS = {};

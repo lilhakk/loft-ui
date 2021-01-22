@@ -6,7 +6,6 @@ import Guide from './Guide';
 import c from 'clsx';
 import s from '../../../common/Breadcrumbs/index.scss';
 
-// Breadcrumbs.Item
 function Breadcrumbs({
   className,
   data,

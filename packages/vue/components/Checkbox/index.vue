@@ -3,7 +3,7 @@
   import s from '../../../common/Checkbox/index.scss';
 
   export default {
-    name: 'Checkbox',
+    name: 'l-checkbox',
     Guide,
     props: {
       selected: { type: Boolean, default: false }

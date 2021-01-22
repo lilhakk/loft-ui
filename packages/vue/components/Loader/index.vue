@@ -4,7 +4,7 @@
 
   export default {
     Guide,
-    name: 'Loader',
+    name: 'l-loader',
     props: {
       variant: { type: String, default: 'circle' },
       color: { type: String, default: '#3155da' },

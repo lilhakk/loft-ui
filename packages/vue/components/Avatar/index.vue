@@ -4,7 +4,7 @@
 
   export default {
     Guide,
-    name: 'Avatar',
+    name: 'l-avatar',
     props: {
       size: { type: String, default: 'm' },
       shape: { type: String, default: 'circle' },

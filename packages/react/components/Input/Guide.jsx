@@ -8,7 +8,7 @@ export default function InputGuide () {
     <>
       <h1>Input</h1>
       <p>...описание...</p>
-      <Code v="import { Input } from 'loft-ui'" />
+      <Code v="import { Input } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Code v={`

@@ -4,20 +4,29 @@
 
   export default {
     name: 'sidebar',
+    methods: {
+      getName(name) {
+        name = name.replace(/l\-/gi, '')
+        return name[0].toUpperCase() + name.slice(1)
+      }
+    },
     data: () => ({ s, components })
   }
 </script>
 
 <template>
   <div :class="s.sidebar">
-    <router-link
-      :class="s.sidebarItem"
-      :active-class="s.sidebarItemActive"
-      :to="'/vue/' + component.name.toLowerCase()"
-      v-for="component in components"
-      :key="component.name"
+    <l-menu
+      variant='vertical'
     >
-      {{ component.name }}
-    </router-link>
+      <l-menu-item
+        :to="'/vue/' + getName(component.name).toLowerCase()"
+        v-for="component in components"
+        :active="'/vue/' + getName(component.name).toLowerCase() === $route.path"
+        :key="component.name"
+      >
+        {{ getName(component.name) }}
+      </l-menu-item>
+    </l-menu>
   </div>
 </template>

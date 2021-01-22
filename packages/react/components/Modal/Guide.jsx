@@ -9,7 +9,7 @@ export default function ModalGuide () {
     <>
       <h1>Modal</h1>
       <p>Скрытая часть появляющаяся поверх всего. Как правило по середине</p>
-      <Code v="import { Modal } from 'loft-ui'" />
+      <Code v="import { Modal } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Example />

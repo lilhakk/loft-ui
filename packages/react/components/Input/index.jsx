@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
-import { c } from '../../helpers';
 import Guide from './Guide';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Input/index.scss';
 
 const InputCommon = props=> <input {...props} />;
 

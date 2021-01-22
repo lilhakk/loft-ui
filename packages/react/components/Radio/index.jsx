@@ -1,7 +1,7 @@
 import React from 'react';
 import Guide from './Guide';
-import { c } from '../../helpers';
-import s from './index.scss';
+import c from 'clsx';
+import s from '../../../common/Radio/index.scss';
 
 // disabled
 function Radio({

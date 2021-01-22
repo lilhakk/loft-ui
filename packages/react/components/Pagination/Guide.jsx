@@ -8,7 +8,7 @@ export default function PaginationGuide () {
     <>
       <h1>Pagination</h1>
       <p>Компонент для переключения между частями контента</p>
-      <Code v="import { Pagination } from 'loft-ui'" />
+      <Code v="import { Pagination } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Code v={`

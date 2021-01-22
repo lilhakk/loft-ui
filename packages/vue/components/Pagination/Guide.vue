@@ -1,12 +1,11 @@
 <script>
   import { Code, InlineCode as I } from '../../helpers';
-  import Pagination from './';
 
   const Example = {
-    components: { Pagination: () => import('./') },
+    components: { 'l-pagination': () => import('./') },
     data: ()=> ({ page: 3 }),
     template: `
-      <Pagination
+      <l-pagination
         :count="10"
         :page="page"
         :onChange="v=> page = v"
@@ -18,7 +17,7 @@
     components: {
       I, Code,
       Example,
-      Pagination: () => import('./')
+      'l-pagination': () => import('./')
     }
   }
 </script>
@@ -27,20 +26,19 @@
   <div>
     <h1>Pagination</h1>
     <p>Компонент для переключения между частями контента</p>
-    <Code v="import { Pagination } from 'loft-ui'" />
+    <Code v="import { l-pagination } from 'loft-ui'" />
 
     <h2>Пример</h2>
     <Code v="
-      components: { Pagination },
       data: ()=> ({ page: 3 }),
       template: `
-        <Pagination
+        <l-pagination
           :count='10'
           :page='page'
           :onChange='v=> page = v'
         />
       `
-    " />
+    " lang="html" />
     <Example />
   </div>
 </template>

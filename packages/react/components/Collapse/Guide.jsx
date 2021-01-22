@@ -4,18 +4,16 @@ import Button from '../Button'
 import Collapse from './'
 
 export default function CollapseGuide () {
-
   return (
     <>
       <h1>Collapse</h1>
       <p>Компонент чтобы скрыть содержимое и отображать по событию</p>
-      <Code v="import { Collapse } from 'loft-ui'" />
+      <Code v="import { Collapse } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Example />
     </>
-  )
-
+  );
 }
 
 function Example () {
@@ -44,5 +42,5 @@ function Example () {
         {visible ? 'Скрыть' : 'Показать'}
       </Button>
     </>
-  )
+  );
 }

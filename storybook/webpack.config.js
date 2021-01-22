@@ -31,7 +31,7 @@ module.exports = env=> {
     entry: './src',
     output: {
       filename: 'bundle.js',
-      path: path.join(__dirname, './build/react'),
+      path: path.join(__dirname, './build'),
       publicPath: '/'
     },
     resolve: {

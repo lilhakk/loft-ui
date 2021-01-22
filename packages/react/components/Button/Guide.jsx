@@ -8,7 +8,7 @@ export default function AvatarGuide () {
     <>
       <h1>Button</h1>
       <p>Кнопка - элемент при нажатии на которую происходит какое-то действие</p>
-      <Code v={`import { Button } from 'loft-ui'`} />
+      <Code v="import { Button } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
       <Code v={`
@@ -18,7 +18,7 @@ export default function AvatarGuide () {
           <Button onClick={() => setCount(count + 1)}>
             Clicked {count} times!
           </Button>
-        )
+        );
       `} />
       <Example />
 
@@ -35,6 +35,14 @@ export default function AvatarGuide () {
       </div>
 
       <h2>Размеры</h2>
+      <Code v={`
+        <Button size='m'>Middle</Button>
+        <Button size='s'>Small</Button>
+      `} />
+      <div style={{ display: 'flex' }}>
+        <Button size='m' style={{ marginRight: '8px' }}>Middle</Button>
+        <Button size='s'>Small</Button>
+      </div>
 
       <h2>Загрузка</h2>
       <p>Проп <I>loading</I> отвечает за статус загрузки. По умолчанию - <I>false</I></p>
