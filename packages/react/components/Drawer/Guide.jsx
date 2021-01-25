@@ -21,14 +21,21 @@ function Example () {
   const [visible, setVisible] = useState(false);
 
   return (
-    <>
-      <Button onClick={()=> setVisible(true)}>Открыть</Button>
+    <div style={{ flexDirection: 'row', display: 'flex' }}>
       <Drawer
         visible={visible}
+        variant='static'
+        style={{
+          width: '240px',
+          backgroundColor: '#333',
+          height: '320px',
+          padding: '8px'
+        }}
         onDismiss={()=> setVisible(false)}
       >
         Content
       </Drawer>
-    </>
+      <Button onClick={()=> setVisible(true)}>Открыть</Button>
+    </div>
   )
 }

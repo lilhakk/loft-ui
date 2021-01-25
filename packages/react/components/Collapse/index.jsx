@@ -5,11 +5,11 @@ import s from '../../../common/Collapse/index.scss';
 
 function Collapse ({ visible, children }) {
   const ref = useRef();
-  const [height, setHeight] = useState(null);
+  const [toHeight, setToHeight] = useState(null);
   const [style, setStyle] = useState({});
 
   function onEnter () {
-    setHeight(ref.current.getBoundingClientRect().height);
+    setToHeight(ref.current.getBoundingClientRect().height);
     setStyle({ height: 0 })
   }
 
@@ -20,12 +20,12 @@ function Collapse ({ visible, children }) {
   return (
     <CSSTransition
       in={visible}
-      timeout={200}
+      timeout={300}
       style={style}
       unmountOnExit
       className={s.collapse}
       onEnter={onEnter}
-      onEntering={()=> setStyle({ height: height + 'px' })}
+      onEntering={()=> setStyle({ height: toHeight + 'px' })}
       onEntered={()=> setStyle({ height: 'auto' })}
       onExit={onExit}
       onExiting={()=> setStyle({ height: 0 })}

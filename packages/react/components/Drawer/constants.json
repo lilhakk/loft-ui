@@ -1,0 +1,20 @@
+{
+  "CASE_STYLES": {
+    "left": { "justifyContent": "flex-start" },
+    "right": { "justifyContent": "flex-end" },
+    "top": { "alignItems": "flex-start" },
+    "bottom": { "alignItems": "flex-end" }
+  },
+  "POSITION_STYLES_HIDE": {
+    "left": "-100%",
+    "top": "-100%",
+    "right": "100%",
+    "bottom": "100%"
+  },
+  "POSITION_NAMES": {
+    "left": "translateX",
+    "right": "translateX",
+    "top": "translateY",
+    "bottom": "translateY"
+  }
+}

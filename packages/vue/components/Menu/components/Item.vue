@@ -22,6 +22,7 @@
   >
     <slot />
   </router-link>
+
   <div
     v-else
     :class="[s.menuItem, {
