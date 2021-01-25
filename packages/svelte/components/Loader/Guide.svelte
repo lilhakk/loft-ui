@@ -5,7 +5,7 @@
 
 <h1>Loader</h1>
 <p>Индикатор загрузки, информирует пользователя что в данный момент что-то подгружается или обрабатывается</p>
-<Code v={`import { Loader } from 'loft-ui'`} lang='js' />
+<Code v={`import { Loader } from 'loft-ui';`} lang='js' />
 
 <h2>Простой пример</h2>
 <Code v={`<Loader />`} />

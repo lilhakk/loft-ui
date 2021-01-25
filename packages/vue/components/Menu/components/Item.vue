@@ -18,9 +18,7 @@
   <router-link
     v-if="!!to"
     :to="to"
-    :class="[s.menuItem, {
-      [s.menuItemActive]: (value && $parent.active === value) || (active === true)
-    }]"
+    :class="[s.menuItem, { [s.menuItemActive]: active === true }]"
   >
     <slot />
   </router-link>
@@ -29,7 +27,7 @@
     :class="[s.menuItem, {
       [s.menuItemActive]: (value && $parent.active === value) || (active === true)
     }]"
-    v-on:click="$parent.onChange(value)"
+    v-on:click="$parent.active = value"
   >
     <slot />
   </div>

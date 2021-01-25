@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import Guide from './Guide';
 import c from 'clsx';
-import s from './index.scss';
+import s from '../../../common/Switch/index.scss';
 
 function Switch({
   selected,

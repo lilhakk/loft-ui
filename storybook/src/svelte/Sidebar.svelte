@@ -1,6 +1,6 @@
 <script>
-  import { Link } from 'svelte-routing';
   import * as components from '@loft-ui/svelte';
+  import { Menu } from '@loft-ui/svelte';
   import c from 'clsx';
   import s from '../index.scss';
 
@@ -15,11 +15,14 @@
   }
 </script>
 
-<div class={s.sidebar}>
+<Menu
+  class={s.sidebar}
+  active={window.location.pathname}
+  variant='vertical'
+>
   {#each Object.keys(components) as key}
-    <Link
-      to={'/svelte/' + key.toLowerCase()}
-      getProps={getProps}
-    >{key}</Link>
+    <Menu.Item to={'/svelte/' + key.toLowerCase()}>
+      {key}
+    </Menu.Item>
   {/each}
-</div>
+</Menu>

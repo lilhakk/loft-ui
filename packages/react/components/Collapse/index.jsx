@@ -1,64 +1,39 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useResize } from '../../helpers';
+import React, { useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Guide from './Guide';
-import c from 'clsx';
 import s from '../../../common/Collapse/index.scss';
 
-const STEPS = {
-  CLOSE: 'close',
-  OPEN: 'open'
-};
+function Collapse ({ visible, children }) {
+  const ref = useRef();
+  const [height, setHeight] = useState(null);
+  const [style, setStyle] = useState({});
 
-function Collapse({ visible, children }) {
-  const refChild = useRef();
-  const [step, setStep] = useState(visible ? STEPS.OPEN : STEPS.CLOSE);
-  const [fullHeight, setFullHeight] = useState(null);
-  const [isUpdateRoot, setIsUpdateRoot] = useState(false);
-
-  useEffect(()=> {
-    if (visible) {
-      setFullHeight(getValidHeight(refChild.current));
-      setStep(STEPS.OPEN);
-    } else {
-      setFullHeight(null);
-    }
-  }, [visible]);
-
-  useResize(refChild, ()=> {
-    if (!fullHeight) return;
-
-    const isOpen = step === STEPS.OPEN;
-    if (isOpen && (getValidHeight(refChild.current) !== fullHeight)) {
-      setFullHeight(getValidHeight(refChild.current));
-      setIsUpdateRoot(true);
-    }
-
-    if (isOpen && (getValidHeight(refChild.current) === fullHeight)) {
-      setIsUpdateRoot(false);
-    }
-  }, [step, fullHeight]);
-
-  const style = {};
-  if (fullHeight !== null && visible) {
-    style.height = fullHeight;
+  function onEnter () {
+    setHeight(ref.current.getBoundingClientRect().height);
+    setStyle({ height: 0 })
   }
-  if (isUpdateRoot) {
-    style.transition = 'none';
+
+  function onExit () {
+    setStyle({ height: ref.current.getBoundingClientRect().height + 'px' })
   }
 
   return (
-    <div
+    <CSSTransition
+      in={visible}
+      timeout={200}
       style={style}
-      className={c(s.collapse, s[step])}
+      unmountOnExit
+      className={s.collapse}
+      onEnter={onEnter}
+      onEntering={()=> setStyle({ height: height + 'px' })}
+      onEntered={()=> setStyle({ height: 'auto' })}
+      onExit={onExit}
+      onExiting={()=> setStyle({ height: 0 })}
+      onExited={()=> setStyle({})}
     >
-      <div ref={refChild}>{children}</div>
-    </div>
+      <div ref={ref}>{children}</div>
+    </CSSTransition>
   );
-
-}
-
-function getValidHeight(node) {
-  return node.getBoundingClientRect().height;
 }
 
 Collapse.Guide = Guide;

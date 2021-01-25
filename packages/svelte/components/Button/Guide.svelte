@@ -7,7 +7,7 @@
 
 <h1>Button</h1>
 <p>Кнопка - элемент при нажатии на которую происходит какое-то действие</p>
-<Code v={`import { Button } from 'loft-ui'`} lang='js' />
+<Code v={`import { Button } from 'loft-ui';`} lang='js' />
 
 <h2>Пример</h2>
 <Code v={`

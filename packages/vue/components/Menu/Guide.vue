@@ -24,10 +24,7 @@
     <Code v="
       data: ()=> ({ active: '' }),
       template: `
-        <l-menu
-          :active='active'
-          :onChange='v=> active = v'
-        >
+        <l-menu :active='active'>
           <l-menu-item value='home'>Главная</l-menu-item>
           <l-menu-item value='about'>О нас</l-menu-item>
           <l-menu-item value='news'>Новости</l-menu-item>
@@ -35,10 +32,7 @@
         </l-menu>
       `
     " lang="html" />
-    <l-menu
-      :active="horizontalActive"
-      :onChange="v=> horizontalActive = v"
-    >
+    <l-menu :active="horizontalActive">
       <l-menu-item value='home'>Главная</l-menu-item>
       <l-menu-item value='about'>О нас</l-menu-item>
       <l-menu-item value='news'>Новости</l-menu-item>
@@ -49,11 +43,7 @@
     <Code v="
       data: ()=> ({ active: '' }),
       template: `
-        <l-menu
-          variant='vertical'
-          :active='active'
-          :onChange='v=> active = v'
-        >
+        <l-menu variant='vertical' :active='active'>
           <l-menu-item value='home'>Главная</l-menu-item>
           <l-menu-item value='about'>О нас</l-menu-item>
           <l-menu-item value='news'>Новости</l-menu-item>
@@ -65,7 +55,6 @@
       variant='vertical'
       style="width: 200px;"
       :active="verticalActive"
-      :onChange="v=> verticalActive = v"
     >
       <l-menu-item value='home'>Главная</l-menu-item>
       <l-menu-item value='about'>О нас</l-menu-item>

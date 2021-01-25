@@ -39,7 +39,7 @@
     <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
     <Code v="import { l-checkbox } from 'loft-ui'" />
 
-    <h2>Пример</h2>
+    <h2>Простой пример</h2>
     <Code v="
       data: ()=> ({ selected: false }),
       template: `

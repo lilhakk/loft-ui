@@ -7,7 +7,7 @@
 
 <h1>Checkbox</h1>
 <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
-<Code v={`import { Checkbox } from 'loft-ui'`} lang='js' />
+<Code v={`import { Checkbox } from 'loft-ui';`} lang='js' />
 
 <h2>Пример</h2>
 <Code v={`

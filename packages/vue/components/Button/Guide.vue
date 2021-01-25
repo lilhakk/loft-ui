@@ -28,7 +28,7 @@
 
     <h2>Простой пример</h2>
     <Code v="
-      data: () => ({ count: 0 }),
+      data: ()=> ({ count: 0 }),
       template: `
         <l-button @click.native='count++'>
           Clicked <<count>> times!

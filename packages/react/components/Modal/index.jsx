@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactCSSTransitionGroup from 'react-transition-group';
 // import Button from '../Button';
 import Portal from '../Portal';
 import Guide from './Guide';
@@ -7,9 +6,8 @@ import c from 'clsx';
 import s from '../../../common/Modal/index.scss';
 
 let MOUSE_POS = {};
-
-window.addEventListener('click', clickMouse, true);
-function clickMouse(e) {
+window.addEventListener('click', onClickWindow, true);
+function onClickWindow(e) {
   const scrollTop = document.documentElement.scrollTop;
 
   MOUSE_POS = {
@@ -101,7 +99,7 @@ function Modal({
         step !== 'close' &&
         <>
           <div className={s.overlay} onClick={onDismiss} />
-          <ReactTransitionGroup
+          <div
             className={c(s.modal, { [s.show]: step === 'show' }, className)}
             style={_style}
           >
@@ -122,7 +120,7 @@ function Modal({
                 <div></div>
               }
             </div>
-          </ReactTransitionGroup>
+          </div>
         </>
       }
     </Portal>

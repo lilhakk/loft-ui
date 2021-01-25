@@ -7,8 +7,7 @@
     name: 'l-pagination',
     props: {
       count: { type: Number, default: 5 },
-      page: { type: Number, default: 1 },
-      onChange: Function
+      page: { type: Number, default: 1 }
     },
     computed: {
       numbersPage() {
@@ -40,25 +39,25 @@
       <div
         :class="s.arrow"
         v-if="page !== 1"
-        v-on:click="onChange(page - 1)"
+        v-on:click="page = page - 1"
       >{{'<'}}</div>
     </div>
 
     <div :class="s.list">
       <template v-if="numbersPage[0] !== 1">
-        <div :class="s.item" v-on:click="onChange(1)">1</div>
+        <div :class="s.item" v-on:click="page = 1">1</div>
         <div :class="[s.item, s.itemPure]">..</div>
       </template>
 
       <div
         :class="[s.item, { [s.active]: page === number }]"
         v-for="number, index in numbersPage"
-        v-on:click="onChange(number)"
+        v-on:click="page = number"
       >{{number}}</div>
 
       <template v-if="numbersPage[numbersPage.length - 1] !== count">
         <div :class="[s.item, s.itemPure]">..</div>
-        <div :class="s.item" v-on:click="onChange(count)">{{count}}</div>
+        <div :class="s.item" v-on:click="page = count">{{count}}</div>
       </template>
     </div>
 
@@ -66,7 +65,7 @@
       <div
         :class="s.arrow"
         v-if="page !== count"
-        v-on:click="onChange(page + 1)"
+        v-on:click="page = page + 1"
       >{{'>'}}</div>
     </div>
   </div>

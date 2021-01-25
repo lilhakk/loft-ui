@@ -7,8 +7,7 @@
     name: 'l-menu',
     props: {
       variant: { type: String, default: 'horizontal' },
-      active: { type: String, default: '' },
-      onChange: Function
+      active: { type: String, default: '' }
     },
     data() {
       return { s }

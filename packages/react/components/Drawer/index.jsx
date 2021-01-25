@@ -15,14 +15,12 @@ const CASE_STYLES = {
 const POSITION_STYLES_HIDE = {
   left: '-100%',
   top: '-100%',
-
   right: '100%',
   bottom: '100%'
 };
 const POSITION_NAMES = {
   left: 'translateX',
   right: 'translateX',
-
   top: 'translateY',
   bottom: 'translateY'
 };
