@@ -17,8 +17,7 @@ export { default as Switch_D } from './Switch';
 export { default as Textarea } from './Textarea';
 
 // --- popups ---
-export { default as Drawer } from './Drawer';
-export { default as Modal } from './Modal';
+export { default as Drawer_D } from './Drawer';
+export { default as Modal_D } from './Modal';
 export { default as Popover } from './Popover';
-export { default as Portal } from './Portal';
 // Dropdown

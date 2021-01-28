@@ -4,7 +4,6 @@ import Button from '../Button';
 import Modal from './';
 
 export default function ModalGuide () {
-
   return (
     <>
       <h1>Modal</h1>
@@ -15,9 +14,7 @@ export default function ModalGuide () {
       <Example />
     </>
   )
-
 }
-
 
 function Example () {
   const [visible, setVisible] = useState(false);
@@ -27,21 +24,12 @@ function Example () {
       <Button onClick={() => setVisible(true)}>Открыть</Button>
       <Modal
         visible={visible}
+        onDone={()=> setVisible(false)}
+        onCancel={()=> setVisible(false)}
         onDismiss={()=> setVisible(false)}
       >
-        <Modal.Title>Title</Modal.Title>
-        <Modal.Content>Content</Modal.Content>
-        <Modal.Actions>
-          <Button
-            size='s'
-            variant='text'
-            onClick={()=> setVisible(false)}
-          >Отмена</Button>
-          <Button
-            style={{ marginLeft: 8 }}
-            size='s'
-          >Да</Button>
-        </Modal.Actions>
+        <Modal.Title>Пример</Modal.Title>
+        <Modal.Content>Контент</Modal.Content>
       </Modal>
     </div>
   )

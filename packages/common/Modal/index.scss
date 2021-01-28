@@ -14,21 +14,17 @@
   flex-direction: column;
   justify-content: space-between;
   transition: 0.3s all;
-  opacity: 0;
   overflow: hidden;
-  transform: scale(0.3);
-}
-
-.show {
-  transform: scale(1);
-  opacity: 1;
 }
 
 .overlay {
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.3);
+  transition: 0.5s all;
 }
 
 .title {
@@ -43,4 +39,8 @@
 .actions {
   display: flex;
   justify-content: flex-end;
+}
+
+.action {
+  margin-left: 8px;
 }

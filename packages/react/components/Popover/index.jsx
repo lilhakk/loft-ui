@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Portal from '../Portal';
 import c from 'clsx';
 import s from '../../../common/Popover/index.scss';
 
@@ -110,7 +109,7 @@ const Popover = ({
     };
   }
 
-  const Wrapper = render ? Portal : Div;
+  const Wrapper = Div;
   return (
     <div className={c({ [s.popoverActive]: isShow }, className)}>
       <div

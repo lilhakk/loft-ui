@@ -1,77 +1,76 @@
 import React, { useState, useEffect } from 'react';
-// import Button from '../Button';
-import Portal from '../Portal';
+import { createPortal } from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
+import Button from '../Button';
 import Guide from './Guide';
 import c from 'clsx';
 import s from '../../../common/Modal/index.scss';
 
+const EL_ROOT = document.getElementById('root');
+
 let MOUSE_POS = {};
 window.addEventListener('click', onClickWindow, true);
-function onClickWindow(e) {
+function onClickWindow(event) {
   const scrollTop = document.documentElement.scrollTop;
+  const clientRect = event.target.getBoundingClientRect();
 
   MOUSE_POS = {
-    x: e.pageX,
-    y: e.pageY - scrollTop
+    x: clientRect.left,
+    y: clientRect.top - scrollTop
   };
 };
 
 function Modal({
   children,
-  // style,
+  style = {},
+  overlayStyle = {},
   className,
   visible,
-  // onDone,
+  onDone,
+  onCancel,
   onDismiss
-  // onCancel
 }) {
-  const [step, setStep] = useState('close');
-  const [mousePositions, setMousePositions] = useState({});
-  const [_style, setStyle] = useState({});
+  const [modalStyle, setModalStyle] = useState(style);
+  const [_overlayStyle, setOverlayStyle] = useState(overlayStyle);
+  const [mousePosition, setMousePosition] = useState({});
 
-  useEffect(()=> {
-    if (visible) {
-      show();
-    } else if (step === 'show') {
-      hide();
-    }
-  }, [visible]);
+  function onEnter () {
+    setMousePosition(MOUSE_POS);
+    setOverlayStyle({ ...overlayStyle, opacity: 0 });
 
-  function show() {
-    setStep('render');
-    setMousePositions(MOUSE_POS);
-
-    setStyle({
+    setModalStyle({
+      ...style,
+      opacity: 0,
+      transform: 'scale(0.3)',
       left: MOUSE_POS.x,
       top: MOUSE_POS.y,
-      transformOrigin: `0px ${MOUSE_POS.y - 300}px`
-    });
-
-    setTimeout(()=> {
-      setStyle({});
-      setStep('show');
-    }, 100);
+      transformOrigin: `0px 0px`
+    })
   }
 
-  function hide() {
-    setStep('render');
+  function onEntering () {
+    setOverlayStyle(overlayStyle);
+    setModalStyle(style)
+  }
 
-    setStyle({
-      left: mousePositions.x,
-      top: mousePositions.y,
-      transformOrigin: `0px ${mousePositions.y - 300}px`
-    });
+  function onExit () {
+    setMousePosition({});
+    setOverlayStyle({ ...overlayStyle, opacity: 0 });
 
-    setTimeout(()=> {
-      setStyle({});
-      setStep('close');
-    }, 300);
+    setModalStyle({
+      ...style,
+      opacity: 0,
+      transform: 'scale(0.3)',
+      left: mousePosition.x,
+      top: mousePosition.y,
+      transformOrigin: `0px 0px`
+    })
   }
 
   let title = null;
   let content = null;
-  const actions = [];
   const other = [];
+  const actions = [];
   React.Children.toArray(children).forEach(child=> {
     if (child.type.name === ModalTitle.name) {
       title = child;
@@ -91,55 +90,61 @@ function Modal({
     other.push(child);
   });
 
-  // render
-  // animation
-  return (
-    <Portal>
-      {
-        step !== 'close' &&
-        <>
-          <div className={s.overlay} onClick={onDismiss} />
-          <div
-            className={c(s.modal, { [s.show]: step === 'show' }, className)}
-            style={_style}
-          >
-            <div className={s.case}>
-              {
-                !!title &&
-                <div className={s.title}>{title}</div>
-              }
+  const renderContent = (
+    <CSSTransition
+      in={visible}
+      timeout={300}
+      unmountOnExit
+      onEnter={onEnter}
+      onEntering={onEntering}
+      onExit={onExit}
+    >
+      <div>
+        <div
+          className={s.overlay}
+          style={_overlayStyle}
+          onClick={onDismiss}
+        />
 
-              <div className={s.content}>{content || other}</div>
-            </div>
-
-            <div className={s.actions}>
-              {!!actions && actions}
-
-              {
-                !actions &&
-                <div></div>
-              }
-            </div>
+        <div
+          style={modalStyle}
+          className={c(s.modal, className)}
+        >
+          <div className={s.case}>
+            {!!title && <div className={s.title}>{title}</div>}
+            <div className={s.content}>{content || other}</div>
           </div>
-        </>
-      }
-    </Portal>
+
+          <div className={s.actions}>
+            {!!actions && actions}
+
+            {
+              !actions.length && onCancel &&
+              <Button size='s' variant='text' onClick={onCancel}>
+                Отмена
+              </Button>
+            }
+
+            {
+              !actions.length && onDone &&
+              <Button size='s' className={s.action} onClick={onDone}>
+                Ок
+              </Button>
+            }
+          </div>
+        </div>
+      </div>
+    </CSSTransition>
   );
-};
+
+  return createPortal(renderContent, EL_ROOT);
+}
 
 Modal.Guide = Guide;
 
-function ModalTitle({ children }) {
-  return children;
-};
-
-function ModalContent({ children }) {
-  return children;
-};
-
-function ModalActions({ children }) {
-  return children;
-};
+const ModalTitle = ({ children }) => children;
+const ModalContent = ({ children }) => children;
+const ModalActions = ({ children }) => children;
 
 Modal.Title = ModalTitle;
 Modal.Content = ModalContent;
