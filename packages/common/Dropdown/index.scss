@@ -1,0 +1,89 @@
+.dropdownCaption {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .dropdownLabel {
+    color: #c7cbce;
+    transition: 0.3s all;
+    display: flex;
+  }
+
+  &:not(.dropdownActive):hover {
+    border-color: #464a69;
+
+    .line {
+      background-color: #464a69;
+    }
+  }
+}
+
+.dropdownIcon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownActive {
+  border-color: #7367f0;
+
+  .line {
+    background-color: #7367f0;
+  }
+
+  .line:nth-child(1) {
+    transform: rotate(-45deg);
+  }
+
+  .line:nth-child(2) {
+    transform: rotate(45deg);
+  }
+}
+
+.line {
+  width: 8px;
+  height: 2px;
+  background-color: #c7cbce;
+  transform: rotate(45deg);
+  margin-right: -3px;
+  transition: 0.3s all;
+
+  &:nth-child(1) {
+    margin-left: -3px;
+  }
+
+  &:nth-child(2) {
+    transform: rotate(-45deg);
+    margin-right: -3px;
+  }
+}
+
+.dropdownHandler {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.dropdownSelect {
+  .dropdownLabel {
+    position: absolute;
+    transform: translate(-18px, -20px) scale(0.75);
+  }
+}
+
+.dropdownSelect.dropdownActive {
+  .dropdownValue {
+    color: #7367f0;
+  }
+}
+
+.dropdownFocus {
+  border-color: #7367f0;
+}

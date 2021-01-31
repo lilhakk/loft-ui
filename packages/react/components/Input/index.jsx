@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import InputMask from 'react-input-mask';
 import Guide from './Guide';
 import c from 'clsx';
@@ -7,7 +7,7 @@ import s from '../../../common/Input/index.scss';
 const InputCommon = props=> <input {...props} />;
 
 function Input({
-  variant = 'default',
+  variant = 'line',
   label,
   type,
   value,
@@ -16,6 +16,7 @@ function Input({
   className,
   classLabel,
   classInput,
+  classFieldset,
   onFocus,
   onBlur,
   onChange,
@@ -28,7 +29,7 @@ function Input({
     value,
     onChange: e=> onChange && onChange(e.target.value),
     onFocus: ()=> {
-      onBlur && onFocus();
+      onFocus && onFocus();
       setFocus(true);
     },
     onBlur: ()=> {
@@ -36,7 +37,7 @@ function Input({
       setFocus(false);
     },
     ...props,
-    className: c(s.input, s[variant], classInput),
+    className: c(s.input, classInput),
     autocomplete: 'new-password'
   };
 
@@ -49,11 +50,18 @@ function Input({
 
   if (variant === 'outline') {
     return (
-      <div className={c(s.inputCase, className)}>
-        <Component
-          {..._props}
-          placeholder={props.placeholder || label}
-        />
+      <div
+        style={style}
+        className={c(s.inputOutline, className, {
+          [s.inputValue]: !!value,
+          [s.inputFocus]: focus
+        })}
+      >
+        <fieldset className={c(s.inputOutlineFieldset, classFieldset)}>
+          <legend className={s.inputLegend}>{label}</legend>
+        </fieldset>
+        <label className={s.inputLabel}>{label}</label>
+        <Component {..._props} />
       </div>
     );
   }
@@ -61,9 +69,12 @@ function Input({
   return (
     <div
       style={style}
-      className={c(s.inputCase, className, { [s.focus]: focus })}
+      className={c(s.inputLine, className, {
+        [s.inputValue]: !!value,
+        [s.inputFocus]: focus
+      })}
     >
-      <label className={c(s.label, classLabel, { [s.focusLabel]: focus || value })}>
+      <label className={c(s.inputLabel, classLabel)}>
         {label}
       </label>
       <Component {..._props} />

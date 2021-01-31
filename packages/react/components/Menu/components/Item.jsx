@@ -16,7 +16,7 @@ export default function MenuItem ({
   _nested,
   _onChange
 }) {
-  const _style = { paddingLeft: 24 * _nested, ...style };
+  const _style = { paddingLeft: 22 * _nested, ...style };
   const classes = c(s.menuItem, className, {
     [s.menuItemActive]: (value && active === value) || active === true
   });
@@ -38,7 +38,7 @@ export default function MenuItem ({
     <div
       style={_style}
       className={classes}
-      onClick={()=> _onChange(value)}
+      onClick={()=> _onChange(value, children)}
     >
       {children}
     </div>

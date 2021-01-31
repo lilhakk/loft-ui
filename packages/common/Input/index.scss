@@ -1,61 +1,116 @@
-.input {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #333;
-  outline: none;
-  color: #333;
-  padding: 8px 0;
-  font-size: 16px;
-  transition: 0.3s all;
+.inputOutline {
+  position: relative;
   width: 100%;
-  z-index: 999;
 
-  &:hover {
-    border-bottom: 1px solid #464a69;
+  .inputLegend {
+    font-size: 10px;
+    visibility: hidden;
+    max-width: 0.01px;
+    padding: 0;
+    white-space: nowrap;
+    transition: 0.01s all;
+  }
+
+  .inputLabel {
+    position: absolute;
+    left: 22px;
+    top: 10px;
+    transition: 0.3s all;
+    color: #a9aab5;
+    z-index: -1;
+  }
+
+  .input {
+    padding: 12px 22px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #464a69;
+    font-size: 16px;
+    transition: 0.3s all;
+    width: 100%;
+    z-index: 999;
   }
 }
 
-.outline {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #333;
-
-  &:focus {
-    border: 1px solid #3155da;
-  }
-}
-
-.label {
+.inputOutlineFieldset {
   position: absolute;
-  left: 0;
+  width: 100%;
   transition: 0.3s all;
-  color: #a9aab5;
+  border: 1px solid #c7cbce;
+  border-radius: 4px;
+  padding: 0px 8px;
+  top: -8px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  z-index: -1;
 }
 
-.focusLabel {
-  transform: translateY(-20px);
-  font-size: 10px;
+.inputOutline.inputFocus .inputOutlineFieldset {
+  border-color: #7367f0;
 }
 
-.inputCase {
+.inputOutline.inputValue, .inputOutline.inputFocus {
+  .inputLabel {
+    left: 17px;
+    font-size: 10px;
+    top: -8px;
+  }
+
+  .inputLegend {
+    max-width: 1000px;
+    padding: 0 8px;
+  }
+}
+
+.inputLine {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+
+  .input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #a9aab5;
+    background-color: transparent;
+  }
+
+  .inputLabel {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: #a9aab5;
+    transition: 0.3s all;
+    z-index: -1;
+  }
 
   &::after {
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
-    background-color: #3155da;
+    height: 1px;
     bottom: 0;
     z-index: 999;
     transition: 0.3s all;
+    background-color: #7367f0;
   }
 }
 
-.focus {
+.inputFocus, .inputValue {
+  .inputLabel {
+    font-size: 10px;
+    top: -4px;
+    left: 0;
+  }
+}
+
+.inputFocus {
   &::after {
     width: 100%;
   }

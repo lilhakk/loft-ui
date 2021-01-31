@@ -11,12 +11,11 @@ const EL_ROOT = document.getElementById('root');
 let MOUSE_POS = {};
 window.addEventListener('click', onClickWindow, true);
 function onClickWindow(event) {
-  const scrollTop = document.documentElement.scrollTop;
   const clientRect = event.target.getBoundingClientRect();
 
   MOUSE_POS = {
     x: clientRect.left,
-    y: clientRect.top - scrollTop
+    y: clientRect.top
   };
 };
 
@@ -26,6 +25,7 @@ function Modal({
   overlayStyle = {},
   className,
   visible,
+  title,
   onDone,
   onCancel,
   onDismiss
@@ -35,6 +35,7 @@ function Modal({
   const [mousePosition, setMousePosition] = useState({});
 
   function onEnter () {
+    document.documentElement.style.overflow = 'hidden';
     setMousePosition(MOUSE_POS);
     setOverlayStyle({ ...overlayStyle, opacity: 0 });
 
@@ -54,6 +55,7 @@ function Modal({
   }
 
   function onExit () {
+    document.documentElement.style.overflow = '';
     setMousePosition({});
     setOverlayStyle({ ...overlayStyle, opacity: 0 });
 
@@ -66,29 +68,6 @@ function Modal({
       transformOrigin: `0px 0px`
     })
   }
-
-  let title = null;
-  let content = null;
-  const other = [];
-  const actions = [];
-  React.Children.toArray(children).forEach(child=> {
-    if (child.type.name === ModalTitle.name) {
-      title = child;
-      return;
-    }
-
-    if (child.type.name === ModalContent.name) {
-      content = child;
-      return;
-    }
-
-    if (child.type.name === ModalActions.name) {
-      actions.push(child);
-      return;
-    }
-
-    other.push(child);
-  });
 
   const renderContent = (
     <CSSTransition
@@ -112,21 +91,19 @@ function Modal({
         >
           <div className={s.case}>
             {!!title && <div className={s.title}>{title}</div>}
-            <div className={s.content}>{content || other}</div>
+            <div className={s.content}>{children}</div>
           </div>
 
           <div className={s.actions}>
-            {!!actions && actions}
-
             {
-              !actions.length && onCancel &&
+              onCancel &&
               <Button size='s' variant='text' onClick={onCancel}>
                 Отмена
               </Button>
             }
 
             {
-              !actions.length && onDone &&
+              onDone &&
               <Button size='s' className={s.action} onClick={onDone}>
                 Ок
               </Button>
@@ -142,11 +119,6 @@ function Modal({
 
 Modal.Guide = Guide;
 
-const ModalTitle = ({ children }) => children;
-const ModalContent = ({ children }) => children;
-const ModalActions = ({ children }) => children;
 
-Modal.Title = ModalTitle;
-Modal.Content = ModalContent;
-Modal.Actions = ModalActions;
+
 export default Modal;

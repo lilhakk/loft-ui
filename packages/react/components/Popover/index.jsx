@@ -1,142 +1,143 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { createPortal } from 'react-dom';
+import Guide from './Guide';
 import c from 'clsx';
 import s from '../../../common/Popover/index.scss';
 
-const Div = ({ children })=> children;
+const EL_ROOT = document.getElementById('root');
 
-// TODO
-// resize
-// Scrollbar
-// left, right
-// top, bottom
-const Popover = ({
-  show,
-  isCaptionAction = true,
-  // position = 'left',
-  animation = 'default',
-  top,
-  left,
-  width,
-  maxHeight,
-  onChange,
+function clearSelect () {
+  if (window.getSelection) {
+    if (window.getSelection().empty) {
+      window.getSelection().empty();
+    } else if (window.getSelection().removeAllRanges) {
+      window.getSelection().removeAllRanges();
+    }
+  } else if (document.selection) {
+    document.selection.empty();
+  }
+}
+
+// TODO: scrollbar, placements
+function Popover ({
+  style,
   className,
-  classWrapper,
-  children
-})=> {
-  const [render, setRender] = useState(false);
-  const [isShow, setIsShow] = useState(false);
+  content,
+  children,
+  visible,
+  placement = 'bottom-start',
+  hasOverlay = true,
+  hasWidthCaption = false,
+  onDismiss
+}, ref) {
+  const [contentStyle, setContentStyle] = useState(style);
   const refCaption = useRef();
-  const refScrollInfo = useRef();
   const refContent = useRef();
 
-  useEffect(()=> {
-    if (show) {
-      const popovers = document.getElementsByClassName(s.popoverActive);
-      popovers[0]?.click();
-      onShow();
-    } else {
-      onHide();
-    }
-  }, [show]);
+  function onEnter () {
+    document.documentElement.style.userSelect = 'none';
+    const captionRect = refCaption.current.getBoundingClientRect();
+    const contentRect = refContent.current.getBoundingClientRect();
+    const topPosition = captionRect.top + document.documentElement.scrollTop;
 
-  let caption = null;
-  let content = null;
-  React.Children.toArray(children).forEach((child, index)=> {
-    if (child.type === Popover.Caption) {
-      if (index !== 0) Error('Caption need use first child');
-      caption = child.props.children;
-      return;
-    }
+    const width = hasWidthCaption ? captionRect.width : contentRect.width;
+    if (!width) width = 'auto';
 
-    if (child.type === Popover.Content) {
-      if (index !== 1) Error('Caption need use two child');
-      content = child.props.children;
-      return;
-    }
-  });
-
-  const onShow = ()=> {
-    setRender(true);
-    setTimeout(()=> {
-      document.documentElement.addEventListener('click', onOverlay);
-      setIsShow(true);
-    }, 100);
-  };
-
-  const onHide = ()=> {
-    onChange(false);
-    setTimeout(()=> {
-      document.documentElement.removeEventListener('click', onOverlay);
-      setIsShow(false);
-    }, 300);
-  };
-
-  const onOverlay = e=> {
-    if (refScrollInfo?.current?.isMoveScroll) return;
-    if (!e.target.closest('.' + s.content) && !e.target.closest('.' + s.caption)) {
-      onHide();
-    }
-  };
-
-  let _styleContent = {};
-  if (width) _styleContent.width = width + 'px';
-  else _styleContent.width = refCaption?.current?.offsetWidth + 'px';
-
-  if (isShow) {
-    if (maxHeight) {
-      _styleContent.height = maxHeight + 'px';
-      _styleContent.maxHeight = maxHeight + 'px';
-    } else if (animation === 'height') {
-      _styleContent.height = refContent?.current?.offsetHeight;
-    }
-
-    _styleContent = {
-      ..._styleContent,
-      top: refCaption?.current?.offsetTop + refCaption?.current?.offsetHeight,
-      left: width
-        ? (refCaption?.current?.offsetLeft - +width + +refCaption?.current?.offsetWidth)
-        : refCaption?.current?.offsetLeft
-    };
-  } else {
-    _styleContent.height = '0px';
+    setContentStyle({
+      ...style,
+      width,
+      top: topPosition + captionRect.height - 5,
+      left: captionRect.left,
+      opacity: 0
+    })
   }
 
-  if (top) _styleContent.marginTop = top;
-  if (left) _styleContent.marginLeft = left;
-  if (!show && animation === 'height') {
-    _styleContent = { ..._styleContent, height: '0px',
-      paddingTop: 0, paddingBottom: 0
-    };
+  function onEntering () {
+    const captionRect = refCaption.current.getBoundingClientRect();
+    const contentRect = refContent.current.getBoundingClientRect();
+    const topPosition = captionRect.top + document.documentElement.scrollTop;
+
+    const width = hasWidthCaption ? captionRect.width : contentRect.width;
+    if (!width) width = 'auto';
+
+    setContentStyle({
+      ...style,
+      width,
+      top: topPosition + captionRect.height + 5,
+      left: captionRect.left,
+      opacity: 1
+    });
   }
 
-  const Wrapper = Div;
+function onEntered () {
+    document.documentElement.style.userSelect = '';
+    if (hasOverlay) {
+      window.addEventListener('click', onClickOverlay, true);
+    }
+  }
+
+  function onExit () {
+    document.documentElement.style.userSelect = 'nonde';
+    const captionRect = refCaption.current.getBoundingClientRect();
+    const contentRect = refContent.current.getBoundingClientRect();
+    const topPosition = captionRect.top + document.documentElement.scrollTop;
+
+    const width = hasWidthCaption ? captionRect.width : contentRect.width;
+    if (!width) width = 'auto';
+
+    setContentStyle({
+      ...style,
+      width,
+      top: topPosition + captionRect.height - 5,
+      left: captionRect.left,
+      opacity: 0
+    });
+  }
+
+  function onExited () {
+    document.documentElement.style.userSelect = '';
+    clearSelect();
+    onDismiss();
+  }
+
+  function onClickOverlay (e) {
+    if (!refCaption.current.contains(e.target) &&
+        !refContent.current.contains(e.target)) {
+      window.removeEventListener('click', onClickOverlay, true);
+      onDismiss && onDismiss();
+    }
+  }
+
+  function stopSelect (e) {
+    e.preventDefault();
+  }
+
   return (
-    <div className={c({ [s.popoverActive]: isShow }, className)}>
-      <div
-        onClick={isCaptionAction ? ()=> onChange(!show) : null}
-        ref={refCaption}
-        className={s.caption}
-      >{caption}</div>
+    <>
+      <div ref={refCaption}>{children}</div>
       {
-        render &&
-        <Wrapper
-          className={c(classWrapper, s[animation], s.content, {
-            [s.show]: show,
-            [s.hide]: !show
-          })}
-          style={_styleContent}
+        createPortal(<CSSTransition
+          in={visible}
+          timeout={300}
+          unmountOnExit
+          onEnter={onEnter}
+          onEntering={onEntering}
+          onEntered={onEntered}
+          onExit={onExit}
+          onExited={onExited}
         >
           <div
             ref={refContent}
-            maxHeight={maxHeight}
-            refScrollInfo={refScrollInfo}
-            width={width}
+            className={c(s.content, className)}
+            style={contentStyle}
           >{content}</div>
-        </Wrapper>
+        </CSSTransition>, EL_ROOT)
       }
-    </div>
+    </>
   );
 };
 
-Popover.Caption = ({ children })=> children;
+Popover.Guide = Guide;
+
 export default Popover;

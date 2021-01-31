@@ -24,12 +24,12 @@ function Example () {
       <Button onClick={() => setVisible(true)}>Открыть</Button>
       <Modal
         visible={visible}
+        title="Пример"
         onDone={()=> setVisible(false)}
         onCancel={()=> setVisible(false)}
         onDismiss={()=> setVisible(false)}
       >
-        <Modal.Title>Пример</Modal.Title>
-        <Modal.Content>Контент</Modal.Content>
+        Контент
       </Modal>
     </div>
   )

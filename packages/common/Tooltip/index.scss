@@ -3,9 +3,10 @@
   position: absolute;
   box-sizing: border-box;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  background-color: #ffffff;
+  background-color: #333333;
+  color: #ffffff;
   border-radius: 6px;
   z-index: 9999;
   opacity: 0;
-  overflow: auto;
+  padding: 8px 16px;
 }
