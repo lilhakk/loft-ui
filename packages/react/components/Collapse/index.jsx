@@ -1,20 +1,21 @@
 import React, { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Guide from './Guide';
+import c from 'clsx';
 import s from '../../../common/Collapse/index.scss';
 
-function Collapse ({ visible, children }) {
+function Collapse({ visible, children }) {
   const ref = useRef();
   const [toHeight, setToHeight] = useState(null);
   const [style, setStyle] = useState({});
 
-  function onEnter () {
+  function onEnter() {
     setToHeight(ref.current.getBoundingClientRect().height);
-    setStyle({ height: 0 })
+    setStyle({ height: 0 });
   }
 
-  function onExit () {
-    setStyle({ height: ref.current.getBoundingClientRect().height + 'px' })
+  function onExit() {
+    setStyle({ height: ref.current.getBoundingClientRect().height + 'px' });
   }
 
   return (
@@ -23,7 +24,7 @@ function Collapse ({ visible, children }) {
       timeout={300}
       style={style}
       unmountOnExit
-      className={s.collapse}
+      className={c(s.case, s.animate)}
       onEnter={onEnter}
       onEntering={()=> setStyle({ height: toHeight + 'px' })}
       onEntered={()=> setStyle({ height: 'auto' })}
