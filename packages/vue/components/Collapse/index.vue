@@ -1,6 +1,6 @@
 <script>
   import Guide from './Guide';
-  import Velocity from 'velocity-animate'
+  import Velocity from 'velocity-animate';
   import s from '../../../common/Collapse/index.scss';
 
   export default {

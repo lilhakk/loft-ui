@@ -3,7 +3,7 @@ import Collapse from '../../Collapse';
 import c from 'clsx';
 import s from '../../../../common/Menu/index.scss';
 
-export default function MenuItem ({
+export default function MenuItem({
   children,
   className,
   style,
@@ -22,7 +22,7 @@ export default function MenuItem ({
     });
   });
 
-  const _style = { paddingLeft: 24 * _nested, ...style };
+  const _style = { paddingLeft: 22 * _nested, ...style };
   return (
     <div className={c({ [s.listActive]: isShow }, className)}>
       <div

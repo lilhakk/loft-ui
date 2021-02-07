@@ -9,7 +9,7 @@
 <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
 <Code v={`import { Checkbox } from 'loft-ui';`} lang='js' />
 
-<h2>Пример</h2>
+<h2>Простой пример</h2>
 <Code v={`
   <script>
     let selected = false;

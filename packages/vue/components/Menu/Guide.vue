@@ -4,14 +4,12 @@
   export default {
     components: {
       I, Code,
-      'l-menu': () => import('./')
+      'l-menu': ()=> import('./')
     },
-    data() {
-      return {
-        horizontalActive: '',
-        verticalActive: ''
-      }
-    }
+    data: ()=> ({
+      horizontal: '',
+      vertical: ''
+    })
   }
 </script>
 
@@ -32,7 +30,7 @@
         </l-menu>
       `
     " lang="html" />
-    <l-menu :active="horizontalActive">
+    <l-menu :active="horizontal">
       <l-menu-item value='home'>Главная</l-menu-item>
       <l-menu-item value='about'>О нас</l-menu-item>
       <l-menu-item value='news'>Новости</l-menu-item>
@@ -54,7 +52,7 @@
     <l-menu
       variant='vertical'
       style="width: 200px;"
-      :active="verticalActive"
+      :active="vertical"
     >
       <l-menu-item value='home'>Главная</l-menu-item>
       <l-menu-item value='about'>О нас</l-menu-item>

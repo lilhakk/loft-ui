@@ -6,12 +6,12 @@ import {
   CASE_STYLES,
   POSITION_STYLES_HIDE,
   POSITION_NAMES
-} from '../constants.json';
+} from '../../../../common/Drawer/constants.json';
 import s from '../../../../common/Drawer/index.scss';
 
 const EL_ROOT = document.getElementById('root');
 
-export default function DrawerFixed ({
+export default function DrawerFixed({
   children,
   visible,
   position = 'left',
@@ -20,19 +20,19 @@ export default function DrawerFixed ({
   const [drawerStyle, setDrawerStyle] = useState({});
   const [overlayStyle, setOverlayStyle] = useState({});
 
-  function onEnter () {
+  function onEnter() {
     setDrawerStyle({
       transform: [POSITION_NAMES[position]] + `(${POSITION_STYLES_HIDE[position]})`
     });
     setOverlayStyle({ opacity: 0 });
   }
 
-  function onEntering () {
+  function onEntering() {
     setDrawerStyle({ transform: [POSITION_NAMES[position]] + '(0)' });
     setOverlayStyle({ opacity: 1 });
   }
 
-  function onExit () {
+  function onExit() {
     setDrawerStyle({
       transform: [POSITION_NAMES[position]] + `(${POSITION_STYLES_HIDE[position]})`
     });
@@ -63,7 +63,6 @@ export default function DrawerFixed ({
       </div>
     </CSSTransition>
   );
-
 
   return createPortal(renderContent, EL_ROOT);
 }

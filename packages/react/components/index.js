@@ -14,7 +14,7 @@ export { default as Checkbox_D } from './Checkbox';
 export { default as Input } from './Input';
 export { default as Radio } from './Radio';
 export { default as Switch_D } from './Switch';
-export { default as Textarea } from './Textarea';
+// export { default as Textarea } from './Textarea';
 
 // --- popups ---
 export { default as AutoComplete_D } from './AutoComplete';
@@ -24,7 +24,8 @@ export { default as Modal_D } from './Modal';
 export { default as Popover_D } from './Popover';
 export { default as Tooltip_D } from './Tooltip';
 
-// Carousel
-// Scrollbar
-// Range
-// Tabs
+// --- advanced ---
+// export { default as Scrollbar } from './Scrollbar';
+// export { default as Range } from './Range';
+// export { default as Carousel } from './Carousel';
+// export { default as Tabs } from './Tabs';

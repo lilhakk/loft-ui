@@ -35,5 +35,7 @@
         { link: '/breadcrumbs', title: 'Салаты' }
       ]"
     />
+
+    <h2>Кастомный сепаратор</h2>
   </div>
 </template>

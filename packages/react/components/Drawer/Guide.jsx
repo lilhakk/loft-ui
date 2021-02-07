@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Code, InlineCode as I } from '../../helpers';
-import Drawer from './'
-import Button from '../Button'
+import React, { useState } from 'react';
+import { Code } from '../../helpers';
+import Drawer from './';
+import Button from '../Button';
 
-export default function DrawerGuide () {
+export default function DrawerGuide() {
   const [example, setExample] = useState(false);
 
   return (
@@ -29,10 +29,10 @@ export default function DrawerGuide () {
         <Drawer
           visible={example}
           onDismiss={()=> setExample(false)}
-        >Content</Drawer>
+        >Контент</Drawer>
         <Button onClick={()=> setExample(true)}>Открыть</Button>
       </div>
     </>
-  )
+  );
 
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.js';
-import VueRouter from 'vue-router';
+import Router from 'vue-router';
+import Portal from 'portal-vue';
 
 import Menu from '@loft-ui/vue/components/Menu';
 import MenuItem from '@loft-ui/vue/components/Menu/components/Item';
@@ -12,7 +13,8 @@ import App from './App';
 
 export default function initVue() {
 
-  Vue.use(VueRouter);
+  Vue.use(Router);
+  Vue.use(Portal);
 
   Vue.component(Menu.name, Menu);
   Vue.component(MenuItem.name, MenuItem);
@@ -22,7 +24,7 @@ export default function initVue() {
   Vue.component(RadioItem.name, RadioItem);
 
   new Vue({
-    render: h => h(App),
+    render: h=> h(App),
     components: { App },
     template: '<App />'
   }).$mount('#root');

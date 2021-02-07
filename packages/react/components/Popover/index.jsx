@@ -7,7 +7,7 @@ import s from '../../../common/Popover/index.scss';
 
 const EL_ROOT = document.getElementById('root');
 
-function clearSelect () {
+function clearSelect() {
   if (window.getSelection) {
     if (window.getSelection().empty) {
       window.getSelection().empty();
@@ -20,22 +20,22 @@ function clearSelect () {
 }
 
 // TODO: scrollbar, placements
-function Popover ({
+function Popover({
   style,
   className,
   content,
   children,
   visible,
-  placement = 'bottom-start',
+  // placement = 'bottom-start',
   hasOverlay = true,
   hasWidthCaption = false,
   onDismiss
-}, ref) {
+}) {
   const [contentStyle, setContentStyle] = useState(style);
   const refCaption = useRef();
   const refContent = useRef();
 
-  function onEnter () {
+  function onEnter() {
     document.documentElement.style.userSelect = 'none';
     const captionRect = refCaption.current.getBoundingClientRect();
     const contentRect = refContent.current.getBoundingClientRect();
@@ -50,10 +50,10 @@ function Popover ({
       top: topPosition + captionRect.height - 5,
       left: captionRect.left,
       opacity: 0
-    })
+    });
   }
 
-  function onEntering () {
+  function onEntering() {
     const captionRect = refCaption.current.getBoundingClientRect();
     const contentRect = refContent.current.getBoundingClientRect();
     const topPosition = captionRect.top + document.documentElement.scrollTop;
@@ -70,14 +70,14 @@ function Popover ({
     });
   }
 
-function onEntered () {
+  function onEntered() {
     document.documentElement.style.userSelect = '';
     if (hasOverlay) {
       window.addEventListener('click', onClickOverlay, true);
     }
   }
 
-  function onExit () {
+  function onExit() {
     document.documentElement.style.userSelect = 'nonde';
     const captionRect = refCaption.current.getBoundingClientRect();
     const contentRect = refContent.current.getBoundingClientRect();
@@ -95,22 +95,18 @@ function onEntered () {
     });
   }
 
-  function onExited () {
+  function onExited() {
     document.documentElement.style.userSelect = '';
+    window.removeEventListener('click', onClickOverlay, true);
     clearSelect();
     onDismiss();
   }
 
-  function onClickOverlay (e) {
+  function onClickOverlay(e) {
     if (!refCaption.current.contains(e.target) &&
         !refContent.current.contains(e.target)) {
-      window.removeEventListener('click', onClickOverlay, true);
       onDismiss && onDismiss();
     }
-  }
-
-  function stopSelect (e) {
-    e.preventDefault();
   }
 
   return (

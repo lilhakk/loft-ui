@@ -17,7 +17,7 @@
 <template>
   <div>
     <h1>Сollapse</h1>
-    <p>С помощью чекбоксов пользователь выбирает элементы из списка данных</p>
+    <p>Компонент чтобы скрыть содержимое и отображать по событию</p>
     <Code v="import { l-collapse } from 'loft-ui'" />
 
     <h2>Простой пример</h2>
@@ -33,12 +33,12 @@
           <div>222</div>
         </l-collapse>
         <l-button @click.native="visible2 = !visible2">
-          {{ visible2 ? 'Скрыть' : 'Открыть' }}
+          {{ visible2 ? 'Скрыть' : 'Показать' }}
         </l-button>
       </div>
     </l-collapse>
     <l-button @click.native="visible = !visible">
-      {{ visible ? 'Скрыть' : 'Открыть' }}
+      {{ visible ? 'Скрыть' : 'Показать' }}
     </l-button>
   </div>
 </template>

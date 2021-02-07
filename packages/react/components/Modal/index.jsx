@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import Button from '../Button';
@@ -34,7 +34,7 @@ function Modal({
   const [_overlayStyle, setOverlayStyle] = useState(overlayStyle);
   const [mousePosition, setMousePosition] = useState({});
 
-  function onEnter () {
+  function onEnter() {
     document.documentElement.style.overflow = 'hidden';
     setMousePosition(MOUSE_POS);
     setOverlayStyle({ ...overlayStyle, opacity: 0 });
@@ -45,16 +45,16 @@ function Modal({
       transform: 'scale(0.3)',
       left: MOUSE_POS.x,
       top: MOUSE_POS.y,
-      transformOrigin: `0px 0px`
-    })
+      transformOrigin: '0px 0px'
+    });
   }
 
-  function onEntering () {
+  function onEntering() {
     setOverlayStyle(overlayStyle);
-    setModalStyle(style)
+    setModalStyle(style);
   }
 
-  function onExit () {
+  function onExit() {
     document.documentElement.style.overflow = '';
     setMousePosition({});
     setOverlayStyle({ ...overlayStyle, opacity: 0 });
@@ -65,8 +65,8 @@ function Modal({
       transform: 'scale(0.3)',
       left: mousePosition.x,
       top: mousePosition.y,
-      transformOrigin: `0px 0px`
-    })
+      transformOrigin: '0px 0px'
+    });
   }
 
   const renderContent = (
@@ -118,7 +118,5 @@ function Modal({
 }
 
 Modal.Guide = Guide;
-
-
 
 export default Modal;
