@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Menu from '../Menu';
 import Input from '../Input';
 import Popover from '../Popover';
@@ -6,7 +6,7 @@ import Guide from './Guide';
 import s from '../../../common/Dropdown/index.scss';
 import c from 'clsx';
 
-function Dropdown ({
+function Dropdown({
   label,
   data = [],
   value,
@@ -15,7 +15,7 @@ function Dropdown ({
   const [activeLabel, setActiveLabel] = useState('');
   const [visible, setVisible] = useState(false);
 
-  function _onChange (value, label) {
+  function _onChange(value, label) {
     setActiveLabel(label);
     setVisible(false);
     onChange(value);
@@ -27,7 +27,7 @@ function Dropdown ({
       active={value}
       onChange={_onChange}
     >
-      {data.map(item => (
+      {data.map(item=> (
         <Menu.Item value={item.value}>{item.label}</Menu.Item>
       ))}
     </Menu>

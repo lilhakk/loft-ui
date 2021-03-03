@@ -1,16 +1,17 @@
 <script>
   import s from '../../../../common/Menu/index.scss';
 
+  // nested
+  // this.parent.nested + 8
   export default {
     name: 'l-menu-item',
+    inject: ['store', 'onChange'],
     props: {
       to: String,
       active: Boolean,
       value: String
     },
-    data() {
-      return { s }
-    }
+    data: ()=> ({ s })
   }
 </script>
 
@@ -18,7 +19,7 @@
   <router-link
     v-if="!!to"
     :to="to"
-    :class="[s.menuItem, { [s.menuItemActive]: active === true }]"
+    :class="[s.menuItem, { [s.menuItemActive]: active || (store.active === value) }]"
   >
     <slot />
   </router-link>
@@ -26,9 +27,9 @@
   <div
     v-else
     :class="[s.menuItem, {
-      [s.menuItemActive]: (value && $parent.active === value) || (active === true)
+      [s.menuItemActive]: store.active === value
     }]"
-    v-on:click="$parent.active = value"
+    @click="()=> onChange(value, $slots.default[0].text)"
   >
     <slot />
   </div>

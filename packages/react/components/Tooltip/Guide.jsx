@@ -1,11 +1,11 @@
 import React from 'react';
-import { Code, InlineCode as I } from '../../helpers';
+import { Code } from '../../helpers';
 import Tooltip from './';
 
-export default function TooltipGuide () {
+export default function TooltipGuide() {
 
   const exampleContent = (
-    <div>Content</div>
+    <div>Контент</div>
   );
 
   return (

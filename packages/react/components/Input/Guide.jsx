@@ -1,8 +1,8 @@
-import React from 'react'
-import { Code, InlineCode as I } from '../../helpers';
-import Input from './'
+import React from 'react';
+import { Code } from '../../helpers';
+import Input from './';
 
-export default function InputGuide () {
+export default function InputGuide() {
 
   return (
     <>
@@ -65,6 +65,6 @@ export default function InputGuide () {
         label='Телефон'
       />
     </>
-  )
+  );
 
 }

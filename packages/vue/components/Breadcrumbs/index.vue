@@ -1,15 +1,20 @@
 <script>
   import Guide from './Guide';
   import s from '../../../common/Breadcrumbs/index.scss';
-  import sep from '../../../common/Breadcrumbs/Separator/index.scss';
 
   export default {
     Guide,
     name: 'l-breadcrumbs',
     props: {
-      data: { type: Array, default: [] }
+      data: { type: Array, default: [] },
+      separator: {
+        type: Object
+      }
     },
-    data: ()=> ({ s, sep })
+    components: {
+      'l-breadcrumbs-separator': () => import('./Separator')
+    },
+    data: ()=> ({ s })
   }
 </script>
 
@@ -27,9 +32,9 @@
         :class="s.breadcrumbsTitle"
       >{{item.title}}</router-link>
 
-      <div
+      <l-breadcrumbs-separator
         v-if="index + 1 !== data.length"
-        :class="sep.breadcrumbsSeparator"
+        :separator="separator"
       />
     </template>
   </div>

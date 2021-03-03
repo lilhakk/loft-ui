@@ -11,6 +11,25 @@
           { link: '/breadcrumbs', title: 'Салаты' }
         ]"
       />`
+      },
+      getCodeCustomExample() {
+        return `<l-breadcrumbs
+        :separator="{
+           data: ()=> ({
+            separatorStyle: \`
+              width: 4px;
+              height: 4px;
+              background-color: #000000;
+            \`
+          }),
+          template: \`<div :style='separatorStyle' />\`
+        }"
+        :data="[
+          { link: '/breadcrumbs', title: 'Главная' },
+          { link: '/breadcrumbs', title: 'Меню' },
+          { link: '/breadcrumbs', title: 'Салаты' }
+        ]"
+      />`
       }
     },
     components: {
@@ -37,5 +56,25 @@
     />
 
     <h2>Кастомный сепаратор</h2>
+    <p>Можно применить любой разделитель с помощью jsx</p>
+    <Code :v="getCodeCustomExample()" lang="html" />
+    <l-breadcrumbs
+      :separator="{
+        data: ()=> ({
+          separatorStyle: `
+            width: 4px;
+            height: 4px;
+            background-color: #000000;
+            margin: 0 8px;
+          `
+        }),
+        template: `<div :style='separatorStyle' />`
+      }"
+      :data="[
+        { link: '/breadcrumbs', title: 'Главная' },
+        { link: '/breadcrumbs', title: 'Меню' },
+        { link: '/breadcrumbs', title: 'Салаты' }
+      ]"
+    />
   </div>
 </template>

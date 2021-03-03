@@ -8,17 +8,21 @@
     props: {
       className: { type: String },
       visible: { type: Boolean, default: false },
-      content: { type: Object }
+      content: { type: Object },
+      hasWidthCaption: { type: Boolean, default: false }
     },
     methods: {
       enter(el) {
         document.documentElement.style.userSelect = 'none';
-        const captionRect = this.$refs.caption.getBoundingClientRect();
+        const captionRect = this.$slots.default[0].elm.getBoundingClientRect();
         const contentRect = this.$refs.content.$el.getBoundingClientRect();
         const topPosition = captionRect.top + document.documentElement.scrollTop;
 
+        const width = this.hasWidthCaption ? captionRect.width : contentRect.width;
+        if (!width) width = 'auto';
+
         this.$refs.content.$el.style = `
-          width: ${contentRect.width}px;
+          width: ${width}px;
           top: ${topPosition + captionRect.height - 5}px;
           left: ${captionRect.left}px;
           opacity: 0;
@@ -27,7 +31,7 @@
         document.body.append(el);
         setTimeout(()=> {
           this.$refs.content.$el.style = `
-            width: ${contentRect.width}px;
+            width: ${width}px;
             top: ${topPosition + captionRect.height + 5}px;
             left: ${captionRect.left}px;
             opacity: 1;
@@ -36,30 +40,35 @@
         }, 0);
       },
       leave() {
-        const captionRect = this.$refs.caption.getBoundingClientRect();
+        const captionRect = this.$slots.default[0].elm.getBoundingClientRect();
         const contentRect = this.$refs.content.$el.getBoundingClientRect();
         const topPosition = captionRect.top + document.documentElement.scrollTop;
 
+        const width = this.hasWidthCaption ? captionRect.width : contentRect.width;
+        if (!width) width = 'auto';
+
         this.$refs.content.$el.style = `
-          width: ${contentRect.width}px;
+          width: ${width}px;
           top: ${topPosition + captionRect.height - 5}px;
           left: ${captionRect.left}px;
           opacity: 0;
         `;
       }
     },
-    data: ()=> ({ s })
+    data() {
+      console.log(this.className)
+      return { s }
+    }
   }
 </script>
 
 <template>
   <div>
-    <div ref="caption">
-      <slot />
-    </div>
+    <slot />
     <transition
       @enter="enter"
       @leave="leave"
+      mode="out-in"
       :duration="300"
     >
       <component

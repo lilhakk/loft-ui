@@ -22,9 +22,3 @@ export { default as Switch } from './Switch';
 // export { default as Modal_D } from './Modal';
 // export { default as Popover_D } from './Popover';
 // export { default as Tooltip_D } from './Tooltip';
-
-// --- advanced ---
-// export { default as Scrollbar } from './Scrollbar';
-// export { default as Range } from './Range';
-// export { default as Carousel } from './Carousel';
-// export { default as Tabs } from './Tabs';

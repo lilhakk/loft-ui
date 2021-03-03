@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import Guide from './Guide';
 import c from 'clsx';
@@ -6,7 +6,7 @@ import s from '../../../common/Input/index.scss';
 
 const InputCommon = props=> <input {...props} />;
 
-function Input({
+const Input = React.forwardRef(({
   variant = 'line',
   label,
   type,
@@ -21,7 +21,7 @@ function Input({
   onBlur,
   onChange,
   ...props
-}) {
+}, ref)=> {
   const [focus, setFocus] = useState(false);
 
   const _props = {
@@ -51,6 +51,7 @@ function Input({
   if (variant === 'outline') {
     return (
       <div
+        ref={ref}
         style={style}
         className={c(s.inputOutline, className, {
           [s.inputValue]: !!value,
@@ -68,6 +69,7 @@ function Input({
 
   return (
     <div
+      ref={ref}
       style={style}
       className={c(s.inputLine, className, {
         [s.inputValue]: !!value,
@@ -80,7 +82,7 @@ function Input({
       <Component {..._props} />
     </div>
   );
-};
+});
 
 Input.Guide = Guide;
 

@@ -9,9 +9,25 @@
       variant: { type: String, default: 'horizontal' },
       active: { type: String, default: '' }
     },
-    data() {
-      return { s }
-    }
+    provide: function() {
+      const store = {}
+
+      Object.defineProperty(store, 'active', {
+        enumerable: true,
+        get: () => this.active
+      })
+
+      return {
+        store,
+        onChange: this.onChange
+      }
+    },
+    methods: {
+      onChange(value, label) {
+        this.$emit('change', value, label);
+      }
+    },
+    data: ()=> ({ s })
   }
 </script>
 

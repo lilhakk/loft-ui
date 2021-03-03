@@ -16,6 +16,8 @@
     <Code v="import { l-input } from 'loft-ui'" />
 
     <h2>Простой пример</h2>
-
+    <l-input
+      label='Email'
+    />
   </div>
 </template>

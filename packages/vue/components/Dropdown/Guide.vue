@@ -5,7 +5,10 @@
     components: {
       I, Code,
       'l-dropdown': () => import('./')
-    }
+    },
+    data: ()=> ({
+      example: ''
+    })
   }
 </script>
 
@@ -15,5 +18,16 @@
     <Code v="import { l-dropdown } from 'loft-ui';" />
 
     <h2>Простой пример</h2>
+    <div style="width: 280px;">
+      <l-dropdown
+        :value="example"
+        :data="[
+          { value: 'java', label: 'Java' },
+          { value: 'js', label: 'JavaScript' },
+          { value: 'cpp', label: 'C++' }
+        ]"
+        @change="v=> example = v"
+      />
+    </div>
   </div>
 </template>

@@ -109,9 +109,13 @@ function Popover({
     }
   }
 
+  children = React.cloneElement(children, {
+    ref: refCaption
+  });
+
   return (
     <>
-      <div ref={refCaption}>{children}</div>
+      {children}
       {
         createPortal(<CSSTransition
           in={visible}
