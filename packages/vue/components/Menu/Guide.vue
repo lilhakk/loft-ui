@@ -17,6 +17,7 @@
 <template>
   <div>
     <h1>Menu</h1>
+    <p>Навигация меню для сайта</p>
     <Code v="import { l-menu } from 'loft-ui';" />
 
     <h2>Простой пример</h2>

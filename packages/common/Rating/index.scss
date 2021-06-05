@@ -14,6 +14,10 @@
   cursor: pointer;
 }
 
+.loftRatingItemLastHover {
+  transform: scale(1.3);
+}
+
 .loftRatingItemActive {
   background-image: url('./img/star_active.svg');
 }

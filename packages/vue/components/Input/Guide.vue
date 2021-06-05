@@ -12,7 +12,7 @@
 <template>
   <div>
     <h1>Input</h1>
-    <p>...описание...</p>
+    <p>Кастомное поле для ввода текста</p>
     <Code v="import { l-input } from 'loft-ui'" />
 
     <h2>Простой пример</h2>

@@ -13,6 +13,7 @@
 <template>
   <div>
     <h1>Switch</h1>
+    <p>Используется для выбора между двумя значениями</p>
     <Code v="import { l-switch } from 'loft-ui';" />
 
     <h2>Простой пример</h2>

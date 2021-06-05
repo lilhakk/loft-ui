@@ -9,6 +9,7 @@
       className: { type: String },
       visible: { type: Boolean, default: false },
       content: { type: Object },
+      contentProps: { type: Object },
       hasWidthCaption: { type: Boolean, default: false }
     },
     methods: {
@@ -56,7 +57,6 @@
       }
     },
     data() {
-      console.log(this.className)
       return { s }
     }
   }
@@ -75,6 +75,7 @@
         v-if="visible"
         ref="content"
         :is="content"
+        v-bind="contentProps"
         :class="[s.content, className]"
       />
     </transition>

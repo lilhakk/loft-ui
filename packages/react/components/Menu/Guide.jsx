@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Code, InlineCode as I } from '../../helpers';
+import { Code } from '../../helpers';
 import Menu from './';
 
-export default function MenuGuide () {
+export default function MenuGuide() {
   const [horizontal, setHorizontal] = useState('');
   const [vertical, setVertical] = useState('');
   const [withList, setWithList] = useState('');
@@ -10,6 +10,7 @@ export default function MenuGuide () {
   return (
     <>
       <h1>Menu</h1>
+      <p>Навигация меню для сайта</p>
       <Code v="import { Menu } from 'loft-ui';" />
 
       <h2>Простой пример</h2>

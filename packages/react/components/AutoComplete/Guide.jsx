@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Code, InlineCode as I } from '../../helpers';
+import { Code } from '../../helpers';
 import AutoComplete from './';
 
-export default function AutoCompleteGuide () {
+export default function AutoCompleteGuide() {
   const [example, setExample] = useState({});
 
   return (
     <>
       <h1>AutoComplete</h1>
+      <p>Всплывающие окно со списком, для выбора значения, со вспомогательным полем для ввода текста</p>
       <Code v="import { AutoComplete } from 'loft-ui';" />
 
       <h2>Простой пример</h2>

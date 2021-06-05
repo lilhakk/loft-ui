@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Code, InlineCode as I } from '../../helpers';
-import Button from '../Button'
-import Collapse from './'
+import React, { useState } from 'react';
+import { Code } from '../../helpers';
+import Button from '../Button';
+import Collapse from './';
 
-export default function CollapseGuide () {
+export default function CollapseGuide() {
   return (
     <>
       <h1>Collapse</h1>
@@ -11,12 +11,35 @@ export default function CollapseGuide () {
       <Code v="import { Collapse } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
+      <Code v={`
+        const [visible, setVisible] = useState(false);
+        const [visible2, setVisible2] = useState(false);
+
+        return (
+          <Collapse visible={visible}>
+            <h3>Заголовок 1</h3>
+            <div>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.</div>
+
+            <Collapse visible={visible2}>
+              <h3>Заголовок 2</h3>
+              <div>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.</div>
+            </Collapse>
+            <Button onClick={()=> setVisible2(!visible2)}>
+              {visible2 ? 'Скрыть' : 'Показать'}
+            </Button>
+          </Collapse>
+
+          <Button onClick={()=> setVisible(!visible)}>
+            {visible ? 'Скрыть' : 'Показать'}
+          </Button>
+        )
+      `} />
       <Example />
     </>
   );
 }
 
-function Example () {
+function Example() {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
 
@@ -24,13 +47,11 @@ function Example () {
     <>
       <Collapse visible={visible}>
         <div style={{ padding: 8, boxSizing: 'border-box' }}>
-          <div>111</div>
-          <div>111</div>
-          <div>111</div>
+          <h3>Заголовок 1</h3>
+          <div>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.</div>
           <Collapse visible={visible2}>
-            <div>222</div>
-            <div>222</div>
-            <div>222</div>
+            <h3 style={{ marginTop: '16px' }}>Заголовок 2</h3>
+            <div>Таким образом реализация намеченных плановых заданий представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.</div>
           </Collapse>
           <Button onClick={()=> setVisible2(!visible2)}>
             {visible2 ? 'Скрыть' : 'Показать'}

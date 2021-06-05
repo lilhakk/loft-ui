@@ -32,10 +32,7 @@
         });
       }
     },
-    data: ()=> ({
-      s,
-      style: ''
-    })
+    data: ()=> ({ s, style: '' })
   }
 </script>
 

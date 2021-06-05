@@ -15,11 +15,13 @@
 <template>
   <div>
     <h1>AutoComplete</h1>
+    <p>Всплывающие окно со списком, для выбора значения, со вспомогательным полем для ввода текста</p>
     <Code v="import { l-auto-complete } from 'loft-ui';" />
 
     <h2>Простой пример</h2>
     <l-auto-complete
       :value="example"
+      :onChange='v => example = v'
       :data="[
         { label: 'Jack London', value: 'jl' },
         { label: 'Liam Ellis', value: 'le' },

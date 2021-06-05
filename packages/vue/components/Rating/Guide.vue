@@ -12,6 +12,7 @@
 <template>
   <div>
     <h1>Rating</h1>
+    <p>Интерфейс для выставления оценок</p>
     <Code v="import { l-rating } from 'loft-ui';" />
 
     <h2>Простой пример</h2>

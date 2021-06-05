@@ -36,10 +36,10 @@ function Dropdown({
   return (
     <Popover
       visible={visible}
-      onDismiss={()=> setVisible(false)}
       content={content}
-      className={s.content}
       hasWidthCaption={true}
+      className={s.content}
+      onDismiss={()=> setVisible(false)}
     >
       <div
         className={c(s.dropdownCaption, {

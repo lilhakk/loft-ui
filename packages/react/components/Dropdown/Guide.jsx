@@ -1,31 +1,37 @@
 import React, { useState } from 'react';
-import { Code, InlineCode as I } from '../../helpers';
+import { Code } from '../../helpers';
 import Dropdown from './';
-import Input from '../Input';
 
-export default function DropdownGuide () {
+export default function DropdownGuide() {
   const [example, setExample] = useState('');
 
   return (
     <>
       <h1>Dropdown</h1>
+      <p>Выпадающее меню - это навигация, для выбора значения</p>
       <Code v="import { Dropdown } from 'loft-ui';" />
 
+      <h2>Простой пример</h2>
+      <Code v={`
+        const [value, setValue] = useState('');
+
+        return (
+          <Dropdown
+            value={value}
+            label='Language'
+            data={[
+              { value: 'java', label: 'Java' },
+              { value: 'js', label: 'JavaScript' },
+              { value: 'cpp', label: 'C++' }
+            ]}
+            onChange={v=> setValue(v)}
+          />
+        )
+      `} />
       <div style={{ width: '280px' }}>
-        <Input
-          label="Login"
-          style={{ marginBottom: '16px' }}
-        />
-
-        <Input
-          label="E-mail"
-          variant="outline"
-          style={{ marginBottom: '16px' }}
-        />
-
         <Dropdown
           value={example}
-          label="Language"
+          label='Language'
           data={[
             { value: 'java', label: 'Java' },
             { value: 'js', label: 'JavaScript' },

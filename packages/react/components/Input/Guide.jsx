@@ -7,7 +7,7 @@ export default function InputGuide() {
   return (
     <>
       <h1>Input</h1>
-      <p>...описание...</p>
+      <p>Кастомное поле для ввода текста</p>
       <Code v="import { Input } from 'loft-ui';" />
 
       <h2>Простой пример</h2>

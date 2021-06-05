@@ -1,57 +1,55 @@
 <script>
   import Guide from './Guide';
+  import Content from './Content';
   import s from '../../../common/AutoComplete/index.scss';
 
-  // fix name
   export default {
     Guide,
     name: 'l-autoComplete',
     props: {
       value: { type: Object, default: ()=> ({}) },
       data: { type: Array, default: ()=> ([]) },
-      label: { type: String, default: 'Select value' }
+      label: { type: String, default: 'Select value' },
+      onChange: { type: Function }
     },
     components: {
       'l-popover': () => import('../Popover'),
-      'l-input': () => import('../Input'),
-      'l-menu': () => import('../Menu')
+      'l-input': () => import('../Input')
     },
-    data() {
-      return {
-        s,
-        inputValue: '',
-        showPopover: false
+    computed: {
+      dataFilter() {
+        return this.data.filter(item => {
+          return this.inputValue
+            ? !!item.label.match(new RegExp('^' + this.inputValue, 'gi'))
+            : true;
+        });
+      },
+      content: ()=> Content,
+      contentProps() {
+        return {
+          data: this.dataFilter,
+          active: this.value.value,
+          onChange: (value, label)=> {
+            this.onChange({ value, label })
+          }
+        }
       }
-    }
+    },
+    data: ()=> ({
+      s,
+      inputValue: '',
+      showPopover: false
+    })
   }
-  // max height popover
 </script>
 
 <template>
   <l-popover
     :className="s.popover"
     :visible="showPopover"
-    :content="{
-      computed: {
-        dataFilter() {
-          return data.filter(item => {
-            return inputValue
-              ? !!item.label.match(new RegExp('^' + inputValue, 'gi'))
-              : true;
-          });
-        }
-      },
-      template: `
-        <l-menu
-          variant='vertical'
-        >
-          <l-menu-item
-            v-for='item in dataFilter'
-          >{{item.label}}</l-menu-item>
-        </l-menu>
-      `
-    }"
     :hasWidthCaption="true"
+    :content="content"
+    :contentProps="contentProps"
   >
     <l-input
       variant="outline"

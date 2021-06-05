@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Code, InlineCode as I } from '../../helpers';
+import { Code } from '../../helpers';
 import Switch from './';
 
-export default function SwitchGuide () {
+export default function SwitchGuide() {
 
   return (
     <>
       <h1>Switch</h1>
+      <p>Используется для выбора между двумя значениями</p>
       <Code v="import { Switch } from 'loft-ui';" />
 
       <h2>Простой пример</h2>
@@ -22,11 +23,11 @@ export default function SwitchGuide () {
       `} />
       <Example />
     </>
-  )
+  );
 
 }
 
-function Example () {
+function Example() {
   const [selected, setSelected] = useState(false);
 
   return (
@@ -34,6 +35,5 @@ function Example () {
       selected={selected}
       onClick={()=> setSelected(!selected)}
     />
-  )
+  );
 }
-

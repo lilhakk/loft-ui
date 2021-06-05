@@ -7,7 +7,8 @@
     name: 'l-menu',
     props: {
       variant: { type: String, default: 'horizontal' },
-      active: { type: String, default: '' }
+      active: { type: String, default: '' },
+      _onChange: { type: Function }
     },
     provide: function() {
       const store = {}
@@ -24,7 +25,9 @@
     },
     methods: {
       onChange(value, label) {
-        this.$emit('change', value, label);
+        this._onChange
+          ? this._onChange(value, label)
+          : this.$emit('change', value, label);
       }
     },
     data: ()=> ({ s })
