@@ -9,7 +9,7 @@
 
   let active = '';
   const activeStore = getContext('active');
-  activeStore.subscribe(value => active = value);
+  activeStore.subscribe(v => active = v);
 </script>
 
 {#if !to}
