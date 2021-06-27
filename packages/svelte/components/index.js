@@ -10,15 +10,15 @@ export { default as Rating } from './Rating';
 
 // --- form ---
 export { default as Checkbox } from './Checkbox';
-// export { default as Input } from './Input';
-// export { default as Radio } from './Radio';
+export { default as Input } from './Input';
+export { default as Radio } from './Radio';
 export { default as Switch } from './Switch';
 // export { default as Textarea } from './Textarea';
 
 // --- popups ---
-// export { default as Drawer } from './Drawer';
-// export { default as Modal } from './Modal';
-// export { default as Popover } from './Popover'; (Popover)
-// export { default as Tooltip } from './Tooltip'; (Popover)
-// export { default as Dropdown } from './Dropdown'; (Popover)
-// export { default as AutoComplete } from './AutoComplete'; (Popover)
+export { default as Drawer } from './Drawer';
+export { default as Modal } from './Modal';
+export { default as Popover } from './Popover';
+export { default as Tooltip } from './Tooltip';
+// export { default as Dropdown } from './Dropdown';
+// export { default as AutoComplete } from './AutoComplete';
